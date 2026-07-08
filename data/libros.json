@@ -1,0 +1,14 @@
+{
+  "libros": [
+    {
+      "id": "lady-patitas-rosadas",
+      "titulo": "Lady Patitas Rosadas",
+      "descripcion": "El misterio de las latas de atún. Una detective, cuatro sospechosos y una ciudad con hambre.",
+      "edad": "4 a 9 años",
+      "idiomas": ["ES", "EN", "PT"],
+      "audiolibro": true,
+      "link": "https://www.amazon.com/dp/B0GFK696QH",
+      "portada": "img/portada.jpg"
+    }
+  ]
+}

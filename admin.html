@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin · Bichito Lector</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --noche: #1E1B3A; --noche2: #2E2A4F; --crema: #FBF6EA; --ventana: #F5D876;
+      --naranja: #E8883C; --hilo: #C0392B; --ok: #2EB5A4; --kraft: #C9A876;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Nunito", sans-serif; background: var(--noche); color: var(--crema); min-height: 100vh; padding-bottom: 90px; }
+    h1, h2, h3, button { font-family: "Baloo 2", cursive; }
+    .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px clamp(16px, 4vw, 40px); border-bottom: 1px solid rgba(245,214,118,.2); flex-wrap: wrap; }
+    .top h1 { font-size: 1.3rem; }
+    .top h1 em { font-style: normal; color: var(--ventana); }
+    .top a { color: var(--kraft); font-weight: 700; text-decoration: none; font-size: .9rem; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px); }
+    .panel { background: var(--noche2); border-radius: 16px; padding: 22px; margin-bottom: 20px; border: 1px solid rgba(245,214,118,.12); }
+    .panel h2 { color: var(--ventana); margin-bottom: 10px; font-size: 1.15rem; }
+    .panel p { font-size: .95rem; line-height: 1.6; color: #D8D2E8; margin-bottom: 10px; }
+    .panel ol { margin: 0 0 14px 20px; font-size: .92rem; color: #D8D2E8; line-height: 1.7; }
+    .panel code { background: rgba(0,0,0,.3); padding: 2px 7px; border-radius: 6px; font-size: .85em; color: var(--ventana); }
+    input[type="text"], input[type="url"], input[type="password"], textarea {
+      width: 100%; font: inherit; font-size: .95rem; padding: 10px 14px; border-radius: 10px;
+      border: 1.5px solid rgba(245,214,118,.25); background: rgba(0,0,0,.25); color: var(--crema);
+    }
+    input:focus, textarea:focus { outline: none; border-color: var(--ventana); }
+    textarea { resize: vertical; min-height: 64px; }
+    label { display: block; font-size: .8rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--kraft); margin: 12px 0 5px; }
+    .btn { display: inline-block; background: var(--naranja); color: #fff; border: none; cursor: pointer; font-size: 1rem; font-weight: 700; padding: 11px 24px; border-radius: 999px; box-shadow: 0 3px 0 #B5651E; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:disabled { opacity: .5; cursor: wait; transform: none; }
+    .btn-ghost { background: transparent; color: var(--kraft); box-shadow: inset 0 0 0 2px var(--kraft); }
+    .btn-mini { padding: 5px 13px; font-size: .85rem; box-shadow: none; }
+    .btn-danger { background: transparent; color: #F09595; box-shadow: inset 0 0 0 2px #8a4444; }
+    .libro { display: grid; grid-template-columns: 120px 1fr; gap: 18px; align-items: start; }
+    .libro + .libro { margin-top: 18px; }
+    .cover { width: 120px; }
+    .cover img { width: 120px; height: 120px; object-fit: cover; border-radius: 10px; display: block; background: rgba(0,0,0,.3); }
+    .cover .ph { width: 120px; height: 120px; border-radius: 10px; border: 2px dashed rgba(245,214,118,.3); display: flex; align-items: center; justify-content: center; color: var(--kraft); font-size: .78rem; text-align: center; padding: 6px; }
+    .cover input[type="file"] { display: none; }
+    .cover .btn-mini { margin-top: 8px; width: 120px; text-align: center; }
+    .fila { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+    .chips { display: flex; gap: 14px; flex-wrap: wrap; padding: 6px 0; }
+    .chips label { display: inline-flex; align-items: center; gap: 6px; margin: 0; text-transform: none; font-size: .92rem; color: var(--crema); font-weight: 700; cursor: pointer; }
+    .chips input { width: 17px; height: 17px; accent-color: var(--naranja); }
+    .acciones { display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px; flex-wrap: wrap; }
+    .barra { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(20,18,48,.97); border-top: 1px solid rgba(245,214,118,.25); padding: 13px clamp(16px,4vw,40px); display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+    #estado { font-size: .92rem; font-weight: 700; color: var(--kraft); }
+    #estado.ok { color: var(--ok); }
+    #estado.error { color: #F09595; }
+    .hidden { display: none !important; }
+    @media (max-width: 560px) { .libro { grid-template-columns: 1fr; } .fila { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <h1>🔍 Admin · Bichito <em>Lector</em></h1>
+    <div>
+      <a href="index.html" target="_blank">Ver el sitio ↗</a>
+      &nbsp;·&nbsp;
+      <a href="#" id="salir" class="hidden">Cerrar sesión</a>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <!-- ===== Login ===== -->
+    <section class="panel" id="loginPanel">
+      <h2>Conectar con GitHub</h2>
+      <p>Los cambios se guardan directo en el repositorio y el sitio se republica solo. Necesitás un <strong>token de GitHub</strong> (se crea una sola vez y queda guardado en este navegador):</p>
+      <ol>
+        <li>Entrá a <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener" style="color:var(--ventana)">github.com/settings/personal-access-tokens/new</a></li>
+        <li>Nombre: <code>admin bichito</code> · Expiración: la más larga</li>
+        <li>En <strong>Repository access</strong> elegí <em>Only select repositories</em> → <code>bichito-lector</code></li>
+        <li>En <strong>Permissions → Contents</strong> elegí <em>Read and write</em></li>
+        <li>Generá el token y pegalo acá:</li>
+      </ol>
+      <label for="token">Token</label>
+      <input type="password" id="token" placeholder="github_pat_…" autocomplete="off">
+      <div class="acciones"><button class="btn" id="entrar">Entrar</button></div>
+    </section>
+
+    <!-- ===== Editor ===== -->
+    <section id="editor" class="hidden">
+      <div class="panel">
+        <h2>Libros del catálogo</h2>
+        <p>Agregá, editá o reordená los cuentos. Al publicar, el sitio se actualiza en 1 a 10 minutos.</p>
+      </div>
+      <div id="lista"></div>
+      <div class="acciones" style="justify-content:flex-start; margin-top:16px;">
+        <button class="btn btn-ghost" id="agregar">＋ Agregar libro</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="barra hidden" id="barra">
+    <span id="estado">Cambios sin publicar</span>
+    <button class="btn" id="publicar">Publicar cambios</button>
+  </div>
+
+  <script>
+    const OWNER = "mcy260", REPO = "bichito-lector", BRANCH = "master", ARCHIVO = "data/libros.json";
+    const API = `https://api.github.com/repos/${OWNER}/${REPO}/contents/`;
+
+    let token = localStorage.getItem("bl_token") || "";
+    let libros = [];
+    let jsonSha = null;
+
+    const $ = (id) => document.getElementById(id);
+    const estado = (msg, clase) => { const e = $("estado"); e.textContent = msg; e.className = clase || ""; };
+
+    const b64aTexto = (b64) => new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/\n/g, "")), (c) => c.charCodeAt(0)));
+    const textoAB64 = (txt) => {
+      const bytes = new TextEncoder().encode(txt);
+      let bin = "";
+      for (let i = 0; i < bytes.length; i += 8192) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 8192));
+      return btoa(bin);
+    };
+
+    async function gh(ruta, opciones = {}) {
+      const res = await fetch(API + ruta, {
+        ...opciones,
+        headers: {
+          "Authorization": "Bearer " + token,
+          "Accept": "application/vnd.github+json",
+          ...(opciones.headers || {}),
+        },
+      });
+      if (!res.ok && res.status !== 404) throw new Error("GitHub respondió " + res.status);
+      return res;
+    }
+
+    async function cargar() {
+      estado("Cargando catálogo…");
+      const res = await gh(ARCHIVO + "?ref=" + BRANCH);
+      if (res.status === 404) { libros = []; jsonSha = null; }
+      else {
+        const data = await res.json();
+        jsonSha = data.sha;
+        libros = (JSON.parse(b64aTexto(data.content)).libros) || [];
+      }
+      pintar();
+      estado("Catálogo cargado (" + libros.length + " libros)", "ok");
+    }
+
+    function slug(txt) {
+      return (txt || "libro").toLowerCase()
+        .replace(/[áàä]/g, "a").replace(/[éèë]/g, "e").replace(/[íìï]/g, "i")
+        .replace(/[óòö]/g, "o").replace(/[úùü]/g, "u").replace(/ñ/g, "n")
+        .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40) || "libro";
+    }
+
+    function pintar() {
+      const lista = $("lista");
+      lista.innerHTML = "";
+      libros.forEach((libro, i) => {
+        const panel = document.createElement("div");
+        panel.className = "panel libro";
+        panel.innerHTML = `
+          <div class="cover">
+            ${libro._nuevaPortada || libro.portada
+              ? `<img src="${libro._nuevaPortada || libro.portada}" alt="">`
+              : `<div class="ph">sin portada</div>`}
+            <input type="file" accept="image/*" data-foto="${i}" id="foto${i}">
+            <button class="btn btn-ghost btn-mini" onclick="document.getElementById('foto${i}').click()">Cambiar portada</button>
+          </div>
+          <div>
+            <label>Título</label>
+            <input type="text" data-campo="titulo" data-i="${i}">
+            <label>Descripción corta</label>
+            <textarea data-campo="descripcion" data-i="${i}"></textarea>
+            <div class="fila">
+              <div>
+                <label>Edad recomendada</label>
+                <input type="text" data-campo="edad" data-i="${i}" placeholder="4 a 9 años">
+              </div>
+              <div>
+                <label>Link de compra</label>
+                <input type="url" data-campo="link" data-i="${i}" placeholder="https://www.amazon.com/dp/…">
+              </div>
+            </div>
+            <label>Idiomas y extras</label>
+            <div class="chips">
+              ${["ES", "EN", "PT"].map((l) => `<label><input type="checkbox" data-idioma="${l}" data-i="${i}" ${(libro.idiomas || []).includes(l) ? "checked" : ""}>${l}</label>`).join("")}
+              <label><input type="checkbox" data-audio data-i="${i}" ${libro.audiolibro ? "checked" : ""}>Audiolibro</label>
+            </div>
+            <div class="acciones">
+              <button class="btn btn-ghost btn-mini" data-mover="-1" data-i="${i}" ${i === 0 ? "disabled" : ""}>↑ Subir</button>
+              <button class="btn btn-ghost btn-mini" data-mover="1" data-i="${i}" ${i === libros.length - 1 ? "disabled" : ""}>↓ Bajar</button>
+              <button class="btn btn-danger btn-mini" data-borrar="${i}">Borrar</button>
+            </div>
+          </div>`;
+        lista.appendChild(panel);
+        panel.querySelector('[data-campo="titulo"]').value = libro.titulo || "";
+        panel.querySelector('[data-campo="descripcion"]').value = libro.descripcion || "";
+        panel.querySelector('[data-campo="edad"]').value = libro.edad || "";
+        panel.querySelector('[data-campo="link"]').value = libro.link || "";
+      });
+      $("barra").classList.remove("hidden");
+    }
+
+    // eventos delegados del editor
+    document.addEventListener("input", (e) => {
+      const t = e.target;
+      if (t.dataset.campo !== undefined && t.dataset.i !== undefined) libros[+t.dataset.i][t.dataset.campo] = t.value.trim();
+    });
+    document.addEventListener("change", (e) => {
+      const t = e.target;
+      const i = +t.dataset.i;
+      if (t.dataset.idioma) {
+        const set = new Set(libros[i].idiomas || []);
+        t.checked ? set.add(t.dataset.idioma) : set.delete(t.dataset.idioma);
+        libros[i].idiomas = ["ES", "EN", "PT"].filter((l) => set.has(l));
+      }
+      if (t.dataset.audio !== undefined) libros[i].audiolibro = t.checked;
+      if (t.dataset.foto !== undefined && t.files && t.files[0]) achicarFoto(t.files[0], +t.dataset.foto);
+    });
+    document.addEventListener("click", (e) => {
+      const t = e.target;
+      if (t.dataset.borrar !== undefined) {
+        if (confirm("¿Borrar \"" + (libros[+t.dataset.borrar].titulo || "este libro") + "\" del catálogo?")) {
+          libros.splice(+t.dataset.borrar, 1);
+          pintar();
+          estado("Cambios sin publicar");
+        }
+      }
+      if (t.dataset.mover !== undefined) {
+        const i = +t.dataset.i, j = i + +t.dataset.mover;
+        [libros[i], libros[j]] = [libros[j], libros[i]];
+        pintar();
+        estado("Cambios sin publicar");
+      }
+    });
+
+    // reduce la portada a 800px máx y la guarda como jpeg base64 pendiente
+    function achicarFoto(archivo, i) {
+      const img = new Image();
+      img.onload = () => {
+        const escala = Math.min(1, 800 / Math.max(img.width, img.height));
+        const c = document.createElement("canvas");
+        c.width = Math.round(img.width * escala);
+        c.height = Math.round(img.height * escala);
+        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+        libros[i]._nuevaPortada = c.toDataURL("image/jpeg", 0.85);
+        pintar();
+        estado("Cambios sin publicar");
+      };
+      img.src = URL.createObjectURL(archivo);
+    }
+
+    $("agregar").addEventListener("click", () => {
+      libros.push({ id: "", titulo: "", descripcion: "", edad: "", idiomas: ["ES"], audiolibro: false, link: "", portada: "" });
+      pintar();
+      estado("Cambios sin publicar");
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    });
+
+    async function subirArchivo(ruta, base64, mensaje) {
+      let sha;
+      const existe = await gh(ruta + "?ref=" + BRANCH);
+      if (existe.status !== 404) sha = (await existe.json()).sha;
+      const res = await gh(ruta, {
+        method: "PUT",
+        body: JSON.stringify({ message: mensaje, content: base64, branch: BRANCH, ...(sha ? { sha } : {}) }),
+      });
+      return res.json();
+    }
+
+    $("publicar").addEventListener("click", async () => {
+      const btn = $("publicar");
+      btn.disabled = true;
+      try {
+        for (const libro of libros) {
+          if (!libro.titulo) throw new Error("Hay un libro sin título.");
+          libro.id = libro.id || slug(libro.titulo);
+          if (libro._nuevaPortada) {
+            estado("Subiendo portada de " + libro.titulo + "…");
+            const ruta = "img/libros/" + libro.id + "-" + Date.now() + ".jpg";
+            await subirArchivo(ruta, libro._nuevaPortada.split(",")[1], "Portada de " + libro.titulo + " (admin)");
+            libro.portada = ruta;
+            delete libro._nuevaPortada;
+          }
+        }
+        estado("Publicando catálogo…");
+        const json = JSON.stringify({ libros }, null, 2);
+        const r = await subirArchivo(ARCHIVO, textoAB64(json), "Actualizar catálogo (admin)");
+        jsonSha = r.content.sha;
+        estado("✓ Publicado. El sitio se actualiza en 1 a 10 minutos.", "ok");
+      } catch (err) {
+        estado("Error: " + err.message + " (probá de nuevo)", "error");
+      }
+      btn.disabled = false;
+    });
+
+    $("entrar").addEventListener("click", async () => {
+      token = $("token").value.trim();
+      if (!token) return estado("Pegá el token primero", "error");
+      try {
+        await cargar();
+        localStorage.setItem("bl_token", token);
+        $("loginPanel").classList.add("hidden");
+        $("editor").classList.remove("hidden");
+        $("salir").classList.remove("hidden");
+      } catch (err) {
+        alert("No pude conectar con GitHub: " + err.message + "\nRevisá el token y sus permisos.");
+      }
+    });
+
+    $("salir").addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("bl_token");
+      location.reload();
+    });
+
+    // sesión recordada
+    if (token) {
+      $("loginPanel").classList.add("hidden");
+      $("editor").classList.remove("hidden");
+      $("salir").classList.remove("hidden");
+      cargar().catch((err) => {
+        estado("El token guardado ya no sirve: " + err.message, "error");
+        localStorage.removeItem("bl_token");
+        $("loginPanel").classList.remove("hidden");
+        $("editor").classList.add("hidden");
+      });
+    }
+  </script>
+</body>
+</html>

@@ -241,6 +241,79 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
+// ---------- Catálogo dinámico (data/libros.json, se edita desde admin.html) ----------
+async function renderCatalogo() {
+  try {
+    const res = await fetch("data/libros.json?v=" + Date.now());
+    if (!res.ok) return;
+    const data = await res.json();
+    if (!Array.isArray(data.libros) || data.libros.length === 0) return;
+    const cont = document.querySelector(".cards");
+    if (!cont) return;
+    cont.innerHTML = "";
+
+    const badge = (texto, extra) => {
+      const s = document.createElement("span");
+      s.className = "badge" + (extra ? " " + extra : "");
+      s.textContent = texto;
+      return s;
+    };
+
+    data.libros.forEach((libro) => {
+      const art = document.createElement("article");
+      art.className = "card reveal";
+
+      const imgWrap = document.createElement("div");
+      imgWrap.className = "card-img";
+      if (libro.portada) {
+        const img = document.createElement("img");
+        img.loading = "lazy";
+        img.decoding = "async";
+        img.src = libro.portada;
+        img.alt = "Portada de " + libro.titulo + ".";
+        imgWrap.appendChild(img);
+      }
+
+      const body = document.createElement("div");
+      body.className = "card-body";
+      const h3 = document.createElement("h3");
+      h3.textContent = libro.titulo;
+      const p = document.createElement("p");
+      p.textContent = libro.descripcion || "";
+      const badges = document.createElement("div");
+      badges.className = "badges";
+      if (libro.edad) badges.appendChild(badge(libro.edad, "badge-age"));
+      (libro.idiomas || []).forEach((i) => badges.appendChild(badge(i)));
+      if (libro.audiolibro) badges.appendChild(badge("Audiolibro", "badge-audio"));
+      body.append(h3, p, badges);
+
+      if (libro.link) {
+        const a = document.createElement("a");
+        a.className = "card-link";
+        a.href = libro.link;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = /amazon\./i.test(libro.link) ? "Ver en Amazon →" : "Ver el libro →";
+        body.appendChild(a);
+      }
+
+      art.append(imgWrap, body);
+      cont.appendChild(art);
+      observer.observe(art);
+    });
+
+    const soon = document.createElement("article");
+    soon.className = "card card-soon reveal";
+    soon.innerHTML = '<div class="card-img card-img-soon"><svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="34" r="20" fill="none" stroke="#C9A876" stroke-width="6"/><line x1="54" y1="50" x2="68" y2="66" stroke="#C9A876" stroke-width="8" stroke-linecap="round"/></svg></div><div class="card-body"><h3>Próximo caso…</h3><p>La colección de Bichito Lector sigue creciendo con nuevas historias ilustradas.</p><div class="badges"><span class="badge badge-soon">Próximamente</span></div></div>';
+    cont.appendChild(soon);
+    observer.observe(soon);
+  } catch (e) {
+    /* sin datos: queda el catálogo estático del HTML */
+  }
+}
+
+renderCatalogo();
+
 // ---------- Menú móvil ----------
 const navToggle = document.getElementById("navToggle");
 const nav = document.getElementById("nav");
