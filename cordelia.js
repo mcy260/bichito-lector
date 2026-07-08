@@ -65,6 +65,7 @@ const scB = document.getElementById("scB");
 const amigas = [1, 2, 3].map((i) => document.getElementById("amiga" + i));
 const grisB = document.getElementById("grisB");
 const scC = document.getElementById("scC");
+const svgCC = document.getElementById("svgCC");
 const cajaL = document.getElementById("cajaL");
 const cajaR = document.getElementById("cajaR");
 const luzC = document.getElementById("luzC");
@@ -81,7 +82,8 @@ const amigaD1 = document.getElementById("amigaD1");
 const amigaD2 = document.getElementById("amigaD2");
 const scrollHint = document.getElementById("scrollHint");
 const ctaFilm = document.getElementById("ctaFilm");
-const caps = [0, 1, 2, 3, 4, 5, 6].map((i) => document.getElementById("cap" + i));
+const tituloFilm = document.getElementById("tituloFilm");
+const caps = [0, 1, 2, 3].map((i) => document.getElementById("cap" + i));
 
 // recorrido del vuelo (coordenadas del viewBox 1440x900)
 const VUELO = [
@@ -111,29 +113,36 @@ function updateFilm() {
 
   if (rect.top > window.innerHeight || rect.bottom < 0) return;
 
-  // TRÁILER in medias res: el misterio primero, el pasado como flashback,
-  // vuelta al presente y corte antes de la resolución.
+  // TEASER "La caja": nunca se explica quién es ni su historia.
+  // 1 la caja · 2 algo espera · 3 flash del sueño · 4 alguien se acercó · 5 título y corte.
 
-  // --- El depósito a oscuras (0 a .18) y de nuevo al final (.66 a 1)
-  scC.style.opacity = Math.max(1 - seg(p, 0.13, 0.19), seg(p, 0.66, 0.71));
-  const abre = seg(p, 0.72, 0.80);
-  cajaL.setAttribute("transform", `translate(${-190 * abre}, 0)`);
-  cajaR.setAttribute("transform", `translate(${200 * abre}, 0)`);
-  luzC.style.opacity = String(0.8 * seg(p, 0.75, 0.84));
-  ojosCerradosC.style.opacity = String(1 - seg(p, 0.85, 0.87));
-  ojosAbiertosC.style.opacity = String(seg(p, 0.85, 0.87));
-  manoC.setAttribute("transform", `translate(${520 - 520 * seg(p, 0.87, 0.94)}, ${30 - 30 * seg(p, 0.87, 0.94)})`);
-  oscuroC.style.opacity = String(0.85 * seg(p, 0.95, 1.0));
+  // el taller y la vidriera no participan del teaser
+  scA.style.opacity = "0";
+  scB.style.opacity = "0";
 
-  // --- Flashback 1 · el taller (.14 a .35)
-  scA.style.opacity = Math.min(seg(p, 0.14, 0.19), 1 - seg(p, 0.30, 0.35));
-  svgCA.style.transform = `scale(${1.1 - 0.08 * seg(p, 0.14, 0.32)})`;
+  // --- El depósito (todo el teaser, salvo el flash)
+  scC.style.opacity = Math.max(1 - seg(p, 0.42, 0.47), seg(p, 0.58, 0.63));
+  // la cámara se acerca despacio a la caja
+  svgCC.style.transformOrigin = "62% 62%";
+  svgCC.style.transform = `scale(${1 + 0.12 * seg(p, 0.04, 0.40)})`;
+  // la caja tiembla cuando alguien se acerca (nunca se abre)
+  let tiembla = 0;
+  if (p > 0.72 && p < 0.86) {
+    tiembla = Math.sin(p * 800) * 4 * Math.sin(((p - 0.72) / 0.14) * Math.PI);
+  }
+  cajaL.setAttribute("transform", `translate(${tiembla * 0.6}, 0)`);
+  cajaR.setAttribute("transform", `translate(${tiembla}, 0)`);
+  luzC.style.opacity = String(0.8 * seg(p, 0.64, 0.78));
+  ojosCerradosC.style.opacity = "1";
+  ojosAbiertosC.style.opacity = "0";
+  manoC.setAttribute("transform", "translate(520, 30)");
+  oscuroC.style.opacity = String(0.9 * seg(p, 0.86, 0.93));
 
-  // --- Flashback 2 · el sueño de volar (.30 a .51): sin niño, sin hilo, sin spoiler
-  scD.style.opacity = Math.min(seg(p, 0.30, 0.35), 1 - seg(p, 0.46, 0.51));
-  const q = seg(p, 0.32, 0.49);
+  // --- El flash del sueño (.42 a .63): un suspiro de colores y nubes
+  scD.style.opacity = Math.min(seg(p, 0.42, 0.47), 1 - seg(p, 0.58, 0.63));
+  const q = seg(p, 0.43, 0.62);
   const pos = vueloPos(q);
-  const rot = 12 * Math.sin(q * Math.PI * 3) * (1 - q * 0.5);
+  const rot = 16 * Math.sin(q * Math.PI * 3);
   const escala = 1 - 0.22 * q;
   cordD.setAttribute("transform", `translate(${pos.x}, ${pos.y}) rotate(${rot}) scale(${escala})`);
   grisD.style.opacity = "0";
@@ -142,29 +151,18 @@ function updateFilm() {
   amigaD1.style.opacity = "0";
   amigaD2.style.opacity = "0";
 
-  // --- Flashback 3 · la vidriera: las amigas se van, los colores se apagan (.46 a .71)
-  scB.style.opacity = Math.min(seg(p, 0.46, 0.51), 1 - seg(p, 0.66, 0.71));
-  amigas.forEach((el, i) => {
-    const t = 0.52 + i * 0.04;
-    const qa = seg(p, t, t + 0.045);
-    el.setAttribute("transform", `translate(${qa * 340}, ${-qa * 560})`);
-    el.style.opacity = String(1 - qa);
-  });
-  grisB.style.opacity = String(0.6 * seg(p, 0.585, 0.665));
-
-  // --- CTA del tráiler
-  const ctaQ = seg(p, 0.965, 0.995);
+  // --- Placa de título y CTA
+  const tQ = seg(p, 0.90, 0.945);
+  tituloFilm.style.opacity = String(tQ);
+  const ctaQ = seg(p, 0.945, 0.98);
   ctaFilm.style.opacity = String(ctaQ);
   ctaFilm.style.pointerEvents = ctaQ > 0.5 ? "auto" : "none";
 
   // --- Subtítulos
-  setCap(caps[0], fade(p, 0.015, 0.135));
-  setCap(caps[1], fade(p, 0.175, 0.29));
-  setCap(caps[2], fade(p, 0.33, 0.46));
-  setCap(caps[3], fade(p, 0.49, 0.58));
-  setCap(caps[4], fade(p, 0.60, 0.665));
-  setCap(caps[5], fade(p, 0.735, 0.87));
-  setCap(caps[6], fade(p, 0.895, 1.04));
+  setCap(caps[0], fade(p, 0.02, 0.17));
+  setCap(caps[1], fade(p, 0.22, 0.38));
+  setCap(caps[2], fade(p, 0.455, 0.60));
+  setCap(caps[3], fade(p, 0.66, 0.85));
 
   scrollHint.style.opacity = String(1 - seg(p, 0.005, 0.03));
 }

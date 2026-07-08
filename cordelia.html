@@ -29,14 +29,45 @@
     }
     .cross h2 { color: var(--crema); font-size: clamp(1.5rem, 3.5vw, 2.1rem); margin-bottom: 8px; }
     .cross p { color: #B9B1D6; margin-bottom: 24px; }
+    .pg-cordelia .pelicula { height: 520vh; }
     .cta-film {
       position: absolute;
       left: 50%;
-      bottom: 22svh;
+      bottom: 18svh;
       transform: translateX(-50%);
       z-index: 5;
       will-change: opacity;
     }
+    .title-card {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 4;
+      pointer-events: none;
+      will-change: opacity;
+      padding: 0 20px;
+    }
+    .title-card .tc-name {
+      font-family: "Baloo 2", cursive;
+      font-weight: 800;
+      font-size: clamp(3rem, 9vw, 5.5rem);
+      color: var(--crema);
+      line-height: 1;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, .6);
+    }
+    .title-card .tc-tag {
+      margin-top: 10px;
+      font-family: "Baloo 2", cursive;
+      font-weight: 600;
+      font-size: clamp(1.05rem, 2.4vw, 1.5rem);
+      color: #D8D2E8;
+    }
+    .breath { animation: breath 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+    @keyframes breath { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.013); } }
   </style>
 </head>
 <body class="pg-cordelia">
@@ -291,9 +322,11 @@
               <rect x="430" y="530" width="190" height="20" rx="8" fill="#4A3521" opacity=".6"/>
             </g>
             <g id="cajaR">
-              <rect x="700" y="460" width="300" height="260" rx="10" fill="#7A5A3A" stroke="#523A22" stroke-width="6"/>
-              <rect x="700" y="460" width="300" height="50" rx="10" fill="#96714C"/>
-              <circle cx="850" cy="590" r="34" fill="#523A22" opacity=".5"/>
+              <g class="breath">
+                <rect x="700" y="460" width="300" height="260" rx="10" fill="#7A5A3A" stroke="#523A22" stroke-width="6"/>
+                <rect x="700" y="460" width="300" height="50" rx="10" fill="#96714C"/>
+                <circle cx="850" cy="590" r="34" fill="#523A22" opacity=".5"/>
+              </g>
             </g>
             <g fill="#FAE3AC">
               <circle class="mote" cx="880" cy="330" r="4"/><circle class="mote mote-3" cx="1020" cy="420" r="5"/>
@@ -393,15 +426,17 @@
 
         <div class="paws" id="paws" aria-hidden="true"></div>
 
-        <p class="cap" id="cap0">Hay una caja, en el fondo del depósito, que nadie abre <strong>hace muchos otoños.</strong></p>
-        <p class="cap" id="cap1">Adentro duerme <strong>Cordelia</strong>, una cometa que nació para volar…</p>
-        <p class="cap" id="cap2">…y que todavía sueña con <strong>un cielo que nunca conoció.</strong></p>
-        <p class="cap" id="cap3">Sus amigas encontraron a su niño. <strong>Ella, no.</strong></p>
-        <p class="cap" id="cap4">Esperó tanto… <strong>que sus colores se apagaron.</strong></p>
-        <p class="cap" id="cap5">Hasta hoy. <strong>Las cajas se mueven.</strong> Una luz. Una manito…</p>
-        <p class="cap" id="cap6"><strong>¿Habrá llegado, por fin, su niño?</strong></p>
+        <p class="cap" id="cap0">En el fondo de la juguetería hay una caja <strong>que nadie abre.</strong></p>
+        <p class="cap" id="cap1">Adentro, <strong>algo espera.</strong></p>
+        <p class="cap" id="cap2">A veces, cuando sopla el viento… <strong>sueña.</strong></p>
+        <p class="cap" id="cap3">Hoy, por primera vez en muchos otoños… <strong>alguien se acercó.</strong></p>
 
-        <a class="btn cta-film" id="ctaFilm" href="#libro" style="opacity:0; pointer-events:none;">Descubrí el final del cuento</a>
+        <div class="title-card" id="tituloFilm" style="opacity:0" aria-hidden="true">
+          <p class="tc-name">Cordelia</p>
+          <p class="tc-tag">Un cuento sobre esperar… y no rendirse.</p>
+        </div>
+
+        <a class="btn cta-film" id="ctaFilm" href="#libro" style="opacity:0; pointer-events:none;">Descubrí qué hay en la caja</a>
 
         <p class="scroll-hint" id="scrollHint">seguí bajando ▾</p>
       </div>
