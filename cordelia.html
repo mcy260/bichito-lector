@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -29,6 +29,14 @@
     }
     .cross h2 { color: var(--crema); font-size: clamp(1.5rem, 3.5vw, 2.1rem); margin-bottom: 8px; }
     .cross p { color: #B9B1D6; margin-bottom: 24px; }
+    .cta-film {
+      position: absolute;
+      left: 50%;
+      bottom: 22svh;
+      transform: translateX(-50%);
+      z-index: 5;
+      will-change: opacity;
+    }
   </style>
 </head>
 <body class="pg-cordelia">
@@ -291,7 +299,7 @@
               <circle class="mote" cx="880" cy="330" r="4"/><circle class="mote mote-3" cx="1020" cy="420" r="5"/>
               <circle class="mote mote-2" cx="760" cy="240" r="4"/>
             </g>
-            <g id="manoC" transform="translate(420,0)">
+            <g id="manoC" transform="translate(520,30)">
               <path d="M1440 520 Q1150 500 1010 470" stroke="#C9542E" stroke-width="46" fill="none" stroke-linecap="round"/>
               <path d="M1440 520 Q1150 500 1010 470" stroke="#E8873C" stroke-width="34" fill="none" stroke-linecap="round"/>
               <circle cx="1000" cy="466" r="26" fill="#E8B48C" stroke="#C98F62" stroke-width="4"/>
@@ -299,9 +307,10 @@
               <circle cx="978" cy="470" r="8" fill="#E8B48C" stroke="#C98F62" stroke-width="3"/>
             </g>
           </svg>
+          <div class="scene-dark" id="oscuroC" aria-hidden="true" style="opacity:0"></div>
         </div>
 
-        <!-- Escena D · el vuelo -->
+        <!-- Escena D · el sueño de volar -->
         <div class="scene" id="scD">
           <svg class="scene-svg" id="svgCD" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Cordelia vuela por el cielo dorado con sus amigas mientras Iñigo y su papá sostienen el hilo desde la colina.">
             <defs>
@@ -384,12 +393,15 @@
 
         <div class="paws" id="paws" aria-hidden="true"></div>
 
-        <p class="cap" id="cap0">En el taller del Sr. Cometero nació una cometa distinta: <strong>Cordelia.</strong></p>
-        <p class="cap" id="cap1">Una a una, sus amigas encontraron a su niño… <strong>menos ella.</strong></p>
-        <p class="cap" id="cap2">Pasaron los otoños, y sus colores <strong>se fueron apagando.</strong></p>
-        <p class="cap" id="cap3">Hasta que un niño curioso llamado <strong>Iñigo</strong> movió la última caja.</p>
-        <p class="cap" id="cap4">El viento la estaba esperando. <strong>¡Arriba, Cordelia!</strong></p>
-        <p class="cap" id="cap5">"La verdadera felicidad está en las cosas simples… <strong>como hacer volar una cometa."</strong></p>
+        <p class="cap" id="cap0">Hay una caja, en el fondo del depósito, que nadie abre <strong>hace muchos otoños.</strong></p>
+        <p class="cap" id="cap1">Adentro duerme <strong>Cordelia</strong>, una cometa que nació para volar…</p>
+        <p class="cap" id="cap2">…y que todavía sueña con <strong>un cielo que nunca conoció.</strong></p>
+        <p class="cap" id="cap3">Sus amigas encontraron a su niño. <strong>Ella, no.</strong></p>
+        <p class="cap" id="cap4">Esperó tanto… <strong>que sus colores se apagaron.</strong></p>
+        <p class="cap" id="cap5">Hasta hoy. <strong>Las cajas se mueven.</strong> Una luz. Una manito…</p>
+        <p class="cap" id="cap6"><strong>¿Habrá llegado, por fin, su niño?</strong></p>
+
+        <a class="btn cta-film" id="ctaFilm" href="#libro" style="opacity:0; pointer-events:none;">Descubrí el final del cuento</a>
 
         <p class="scroll-hint" id="scrollHint">seguí bajando ▾</p>
       </div>
@@ -416,7 +428,7 @@
                 Incluye audiolibro
               </span>
             </div>
-            <p class="book-pitch">Cordelia espera, otoño tras otoño, al niño que la haga volar. Una historia sobre la paciencia, la autoestima y la felicidad de las cosas simples.</p>
+            <p class="book-pitch">Cordelia espera, otoño tras otoño, al niño que la haga volar. ¿De quién era la manito que movió la última caja? <strong>El final se descubre en el libro.</strong></p>
             <a class="btn" href="mailto:contacto@bichitolector.com?subject=Quiero%20el%20libro%20Cordelia">Consultá por este cuento</a>
           </div>
         </div>

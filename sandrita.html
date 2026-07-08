@@ -1,0 +1,455 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sandrita la bufandita · Bichito Lector</title>
+  <meta name="description" content="Sandrita es una bufandita de invierno con unas vacaciones de playa por delante. Un cuento ilustrado de Bichito Lector sobre la perseverancia: pasitos que te llevan a lo que soñás.">
+  <meta name="theme-color" content="#C9803A">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bichito Lector">
+  <meta property="og:title" content="Sandrita la bufandita · el cuento de los pasitos">
+  <meta property="og:description" content="Una bufandita de invierno, unas vacaciones de playa y muchos planes que no salen a la primera. Scrolleá: cada scroll es un pasito.">
+  <meta property="og:image" content="img/sandrita_portada.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .pg-sandrita .hero-veil {
+      background: linear-gradient(180deg, rgba(30,27,58,.30) 0%, rgba(30,27,58,0) 30%, rgba(60,48,38,.05) 55%, rgba(56,40,30,.82) 92%);
+    }
+    .pg-sandrita .pelicula { background: #EAD6B8; }
+    .cross {
+      background: var(--noche);
+      padding: clamp(50px, 8vh, 90px) clamp(16px, 5vw, 60px);
+      text-align: center;
+    }
+    .cross h2 { color: var(--crema); font-size: clamp(1.5rem, 3.5vw, 2.1rem); margin-bottom: 8px; }
+    .cross p { color: #B9B1D6; margin-bottom: 24px; }
+  </style>
+</head>
+<body class="pg-sandrita">
+
+  <!-- ===== Header ===== -->
+  <header class="header" id="inicio">
+    <a class="logo" href="index.html" aria-label="Bichito Lector, inicio">
+      <svg class="logo-bug" viewBox="0 0 40 32" aria-hidden="true">
+        <circle cx="9" cy="20" r="7" fill="#8BC34A"/>
+        <circle cx="19" cy="18" r="7" fill="#AED581"/>
+        <circle cx="29" cy="16" r="8" fill="#8BC34A"/>
+        <circle cx="26" cy="13" r="3.2" fill="#FBF6EA" stroke="#3A2E22" stroke-width="1.4"/>
+        <circle cx="33" cy="12" r="3.2" fill="#FBF6EA" stroke="#3A2E22" stroke-width="1.4"/>
+        <circle cx="26.6" cy="13.4" r="1.3" fill="#3A2E22"/>
+        <circle cx="33.6" cy="12.4" r="1.3" fill="#3A2E22"/>
+        <path d="M27 6 Q28 2 25 1" stroke="#3A2E22" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        <path d="M33 6 Q34 2 37 1" stroke="#3A2E22" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">Bichito <em>Lector</em></span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#plan">El plan</a>
+      <a href="#libro">El libro</a>
+      <a href="index.html#catalogo">Cuentos</a>
+      <a href="index.html" class="btn btn-small">Volver al inicio</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  </header>
+
+  <main id="pageMain">
+    <!-- Hilo de lana (se dibuja con el scroll) -->
+    <svg class="thread" id="thread" aria-hidden="true"><path id="threadPath" d="" fill="none"/></svg>
+
+    <!-- ===== 1 · Hero ===== -->
+    <section class="hero">
+      <div class="hero-bg" id="heroBg">
+        <img src="img/sandrita_playa.jpg" alt="La orilla del mar turquesa sobre la arena, con estrellas de mar." fetchpriority="high">
+      </div>
+      <div class="hero-veil" aria-hidden="true"></div>
+      <div class="hero-content" id="heroContent">
+        <p class="kicker">Un cuento de Bichito Lector</p>
+        <h1>Sandrita era una bufanda de invierno.<br>Las vacaciones eran en la playa.</h1>
+        <p class="hero-sub">La historia de una bufandita que no se rinde.<br><strong>El scroll son sus pasitos: no dejes de darlos.</strong></p>
+        <a href="#plan" class="btn btn-hero">Dar el primer pasito ↓</a>
+      </div>
+      <span class="pin" data-pin style="left:50%; bottom:40px;"></span>
+    </section>
+
+    <!-- ===== 2 · La película (el scroll son los pasitos) ===== -->
+    <section class="pelicula" id="plan">
+      <span class="pin" data-pin style="left:12%; top:20%;"></span>
+      <span class="pin" data-pin style="right:10%; top:65%;"></span>
+      <div class="stage" id="stage">
+
+        <!-- Escena A · la misión -->
+        <div class="scene" id="scA">
+          <svg class="scene-svg" id="svgSA" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" role="img" aria-label="El cuarto de Anita en verano: Sandrita cuida al oso Pompón sobre la cama.">
+            <defs>
+              <linearGradient id="gSAwall" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#DCC2CC"/><stop offset="1" stop-color="#C9A8B4"/>
+              </linearGradient>
+              <radialGradient id="gSAsun">
+                <stop offset=".25" stop-color="#FFF3C4" stop-opacity=".95"/><stop offset="1" stop-color="#FFF3C4" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="1440" height="900" fill="url(#gSAwall)"/>
+            <rect x="0" y="660" width="1440" height="240" fill="#B58968"/>
+            <g stroke="#96714C" stroke-width="4"><line x1="0" y1="730" x2="1440" y2="730"/><line x1="0" y1="810" x2="1440" y2="810"/></g>
+            <g id="ventanaSA">
+              <rect x="960" y="140" width="270" height="320" rx="10" fill="#A8DCE8" stroke="#C9A876" stroke-width="12"/>
+              <line x1="1095" y1="146" x2="1095" y2="454" stroke="#C9A876" stroke-width="10"/>
+              <circle cx="1040" cy="220" r="90" fill="url(#gSAsun)"/>
+              <circle cx="1040" cy="220" r="34" fill="#FFE28A"/>
+              <path class="curtain" d="M1230 140 q40 160 -10 320 L1256 460 L1256 140 Z" fill="#E8A3B8" opacity=".9"/>
+              <polygon points="966,460 1224,460 840,900 500,900" fill="#FFE9A3" opacity=".22"/>
+            </g>
+            <g id="camaSA">
+              <rect x="360" y="600" width="500" height="34" rx="12" fill="#A9764C" stroke="#6B4732" stroke-width="4"/>
+              <rect x="382" y="500" width="456" height="110" rx="20" fill="#7FB4A8" stroke="#5E8F84" stroke-width="4"/>
+              <rect x="350" y="440" width="26" height="190" rx="8" fill="#A9764C" stroke="#6B4732" stroke-width="4"/>
+              <rect x="846" y="470" width="24" height="160" rx="8" fill="#A9764C" stroke="#6B4732" stroke-width="4"/>
+              <ellipse cx="452" cy="500" rx="62" ry="26" fill="#FBF6EA" stroke="#D9CBB4" stroke-width="4"/>
+            </g>
+            <g id="pomponSA">
+              <ellipse cx="700" cy="470" rx="58" ry="52" fill="#A9764C" stroke="#82573A" stroke-width="5"/>
+              <circle cx="700" cy="392" r="42" fill="#A9764C" stroke="#82573A" stroke-width="5"/>
+              <circle cx="672" cy="360" r="15" fill="#A9764C" stroke="#82573A" stroke-width="4"/>
+              <circle cx="728" cy="360" r="15" fill="#A9764C" stroke="#82573A" stroke-width="4"/>
+              <circle cx="672" cy="362" r="7" fill="#C99D72"/><circle cx="728" cy="362" r="7" fill="#C99D72"/>
+              <ellipse cx="700" cy="404" rx="20" ry="15" fill="#C99D72"/>
+              <polygon points="700,398 693,406 707,406" fill="#4A3521"/>
+              <ellipse cx="686" cy="384" rx="6" ry="8" fill="#33241A"/><ellipse cx="714" cy="384" rx="6" ry="8" fill="#33241A"/>
+              <circle cx="684" cy="381" r="2.4" fill="#FFFFFF"/><circle cx="712" cy="381" r="2.4" fill="#FFFFFF"/>
+              <ellipse cx="652" cy="500" rx="20" ry="14" fill="#A9764C" stroke="#82573A" stroke-width="4"/>
+              <ellipse cx="748" cy="500" rx="20" ry="14" fill="#A9764C" stroke="#82573A" stroke-width="4"/>
+            </g>
+            <g id="sandSA" transform="rotate(6 560 470)">
+              <rect x="530" y="380" width="60" height="150" rx="14" fill="#D9A054" stroke="#A9713A" stroke-width="4"/>
+              <polyline points="534,410 550,398 566,410 586,398" stroke="#B5542E" stroke-width="9" fill="none"/>
+              <polyline points="534,432 550,420 566,432 586,420" stroke="#8FB4C9" stroke-width="5" fill="none"/>
+              <polyline points="534,505 550,493 566,505 586,493" stroke="#B5542E" stroke-width="9" fill="none"/>
+              <ellipse cx="549" cy="454" rx="7" ry="9" fill="#FBF6EA" stroke="#A9713A" stroke-width="2.5"/>
+              <ellipse cx="573" cy="454" rx="7" ry="9" fill="#FBF6EA" stroke="#A9713A" stroke-width="2.5"/>
+              <circle cx="550" cy="456" r="3.5" fill="#4A2410"/><circle cx="574" cy="456" r="3.5" fill="#4A2410"/>
+              <path d="M552 472 q9 8 18 0" stroke="#8E4A23" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              <g stroke="#B5542E" stroke-width="3.5" stroke-linecap="round">
+                <line x1="536" y1="530" x2="532" y2="552"/><line x1="548" y1="530" x2="546" y2="554"/>
+                <line x1="560" y1="530" x2="560" y2="552"/><line x1="572" y1="530" x2="574" y2="554"/><line x1="584" y1="530" x2="588" y2="552"/>
+              </g>
+            </g>
+            <g id="anitaSA" class="idle">
+              <ellipse cx="920" cy="640" rx="30" ry="10" fill="#96714C" opacity=".5"/>
+              <path d="M896 508 Q920 490 944 508 L952 610 L888 610 Z" fill="#5FA8A0" stroke="#47867E" stroke-width="4"/>
+              <circle cx="932" cy="560" r="7" fill="#F2C14E"/>
+              <circle cx="920" cy="478" r="30" fill="#C98F62" stroke="#A9713A" stroke-width="3"/>
+              <path d="M890 470 Q892 442 920 444 Q950 442 950 472 Q950 456 938 452 Q916 444 898 460 Q890 466 890 470 Z" fill="#3A2A22"/>
+              <path d="M890 468 q-4 26 6 34 q-2 -22 0 -30 Z" fill="#3A2A22"/>
+              <path d="M950 468 q4 26 -6 34 q2 -22 0 -30 Z" fill="#3A2A22"/>
+              <ellipse cx="910" cy="480" rx="4.5" ry="6" fill="#33241A"/><ellipse cx="932" cy="480" rx="4.5" ry="6" fill="#33241A"/>
+              <circle cx="908" cy="477" r="2" fill="#FFFFFF"/><circle cx="930" cy="477" r="2" fill="#FFFFFF"/>
+              <path d="M912 496 q8 7 16 0" stroke="#8E4A23" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <rect x="900" y="610" width="14" height="30" rx="6" fill="#C98F62"/>
+              <rect x="926" y="610" width="14" height="30" rx="6" fill="#C98F62"/>
+            </g>
+            <g id="valijaSA">
+              <rect x="170" y="700" width="180" height="120" rx="16" fill="#D96A8B" stroke="#B04A6B" stroke-width="5"/>
+              <rect x="230" y="672" width="60" height="34" rx="12" fill="none" stroke="#B04A6B" stroke-width="10"/>
+              <line x1="170" y1="760" x2="350" y2="760" stroke="#B04A6B" stroke-width="5"/>
+              <circle cx="205" cy="828" r="12" fill="#8E3A55"/><circle cx="315" cy="828" r="12" fill="#8E3A55"/>
+            </g>
+            <g fill="#FFF3C4">
+              <circle class="mote" cx="640" cy="300" r="4"/><circle class="mote mote-2" cx="820" cy="260" r="4"/>
+              <circle class="mote mote-3" cx="540" cy="360" r="4"/>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Escena B · los planes fallidos -->
+        <div class="scene" id="scB">
+          <svg class="scene-svg" id="svgSB" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Sandrita se esconde en la valija abierta, pero la mano de mamá la descubre y la levanta.">
+            <defs>
+              <linearGradient id="gSBwall" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#D2B4C0"/><stop offset="1" stop-color="#BF9AA8"/>
+              </linearGradient>
+            </defs>
+            <rect width="1440" height="900" fill="url(#gSBwall)"/>
+            <rect x="0" y="640" width="1440" height="260" fill="#B58968"/>
+            <g stroke="#96714C" stroke-width="4"><line x1="0" y1="716" x2="1440" y2="716"/><line x1="0" y1="800" x2="1440" y2="800"/></g>
+            <g id="estanteSB">
+              <rect x="330" y="250" width="330" height="16" rx="8" fill="#96714C"/>
+              <rect x="360" y="196" width="90" height="54" rx="8" fill="#FBF6EA" stroke="#D9CBB4" stroke-width="4"/>
+              <rect x="360" y="214" width="90" height="10" fill="#7FB4A8"/>
+              <rect x="470" y="204" width="84" height="46" rx="8" fill="#E8A3B8" stroke="#C97F98" stroke-width="4"/>
+            </g>
+            <g id="valijaSB">
+              <rect x="520" y="560" width="420" height="180" rx="20" fill="#D96A8B" stroke="#B04A6B" stroke-width="6"/>
+              <rect x="540" y="380" width="380" height="190" rx="18" fill="#C25A7B" stroke="#B04A6B" stroke-width="6"/>
+              <rect x="560" y="400" width="340" height="150" rx="12" fill="#8E3A55"/>
+              <g>
+                <rect x="560" y="600" width="110" height="70" rx="14" fill="#7FB4A8"/>
+                <rect x="680" y="600" width="110" height="70" rx="14" fill="#F2C14E"/>
+                <rect x="800" y="600" width="110" height="70" rx="14" fill="#8FB4C9"/>
+              </g>
+            </g>
+            <g id="manoSB" transform="translate(0,-420)">
+              <rect x="920" y="-200" width="90" height="360" rx="40" fill="#9B8BC4" stroke="#7B6BA4" stroke-width="5"/>
+              <circle cx="965" cy="196" r="42" fill="#C98F62" stroke="#A9713A" stroke-width="4"/>
+              <circle cx="936" cy="222" r="13" fill="#C98F62" stroke="#A9713A" stroke-width="3.5"/>
+              <circle cx="994" cy="222" r="13" fill="#C98F62" stroke="#A9713A" stroke-width="3.5"/>
+            </g>
+            <g id="sandSB">
+              <g id="sandSBinner">
+                <rect x="640" y="430" width="62" height="156" rx="14" fill="#D9A054" stroke="#A9713A" stroke-width="4"/>
+                <polyline points="644,462 662,450 680,462 700,450" stroke="#B5542E" stroke-width="9" fill="none"/>
+                <polyline points="644,484 662,472 680,484 700,472" stroke="#8FB4C9" stroke-width="5" fill="none"/>
+                <polyline points="644,556 662,544 680,556 700,544" stroke="#B5542E" stroke-width="9" fill="none"/>
+                <ellipse cx="660" cy="508" rx="7" ry="9" fill="#FBF6EA" stroke="#A9713A" stroke-width="2.5"/>
+                <ellipse cx="684" cy="508" rx="7" ry="9" fill="#FBF6EA" stroke="#A9713A" stroke-width="2.5"/>
+                <circle cx="661" cy="510" r="3.5" fill="#4A2410"/><circle cx="685" cy="510" r="3.5" fill="#4A2410"/>
+                <ellipse cx="672" cy="528" rx="6" ry="4" fill="#8E4A23"/>
+                <g stroke="#B5542E" stroke-width="3.5" stroke-linecap="round">
+                  <line x1="646" y1="586" x2="642" y2="608"/><line x1="658" y1="586" x2="656" y2="610"/>
+                  <line x1="670" y1="586" x2="670" y2="608"/><line x1="682" y1="586" x2="684" y2="610"/><line x1="694" y1="586" x2="698" y2="608"/>
+                </g>
+              </g>
+            </g>
+            <g fill="#FFF3C4">
+              <circle class="mote" cx="420" cy="330" r="4"/><circle class="mote mote-3" cx="1050" cy="380" r="4"/>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Escena C · la idea -->
+        <div class="scene" id="scC">
+          <svg class="scene-svg" id="svgSC" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Al atardecer, Sandrita triste junto a Pompón tiene una idea y se abriga en su cuello.">
+            <defs>
+              <linearGradient id="gSCwall" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#B08398"/><stop offset="1" stop-color="#8E6478"/>
+              </linearGradient>
+              <linearGradient id="gSCsky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#F2A65E"/><stop offset="1" stop-color="#D96A8B"/>
+              </linearGradient>
+            </defs>
+            <rect width="1440" height="900" fill="url(#gSCwall)"/>
+            <rect x="0" y="660" width="1440" height="240" fill="#96714C"/>
+            <g>
+              <rect x="980" y="150" width="250" height="300" rx="10" fill="url(#gSCsky)" stroke="#C9A876" stroke-width="12"/>
+              <line x1="1105" y1="156" x2="1105" y2="444" stroke="#C9A876" stroke-width="10"/>
+              <circle cx="1055" cy="330" r="30" fill="#FFE28A"/>
+            </g>
+            <g id="camaSC">
+              <rect x="380" y="600" width="520" height="34" rx="12" fill="#8E6034" stroke="#6B4732" stroke-width="4"/>
+              <rect x="402" y="505" width="476" height="105" rx="20" fill="#6B9A8E" stroke="#527A70" stroke-width="4"/>
+            </g>
+            <g id="pomponSC">
+              <ellipse cx="760" cy="475" rx="58" ry="52" fill="#A9764C" stroke="#82573A" stroke-width="5"/>
+              <circle cx="760" cy="396" r="42" fill="#A9764C" stroke="#82573A" stroke-width="5"/>
+              <circle cx="732" cy="364" r="15" fill="#A9764C" stroke="#82573A" stroke-width="4"/>
+              <circle cx="788" cy="364" r="15" fill="#A9764C" stroke="#82573A" stroke-width="4"/>
+              <circle cx="732" cy="366" r="7" fill="#C99D72"/><circle cx="788" cy="366" r="7" fill="#C99D72"/>
+              <ellipse cx="760" cy="408" rx="20" ry="15" fill="#C99D72"/>
+              <polygon points="760,402 753,410 767,410" fill="#4A3521"/>
+              <ellipse cx="746" cy="388" rx="6" ry="8" fill="#33241A"/><ellipse cx="774" cy="388" rx="6" ry="8" fill="#33241A"/>
+              <circle cx="744" cy="385" r="2.4" fill="#FFFFFF"/><circle cx="772" cy="385" r="2.4" fill="#FFFFFF"/>
+              <ellipse cx="712" cy="505" rx="20" ry="14" fill="#A9764C" stroke="#82573A" stroke-width="4"/>
+              <ellipse cx="808" cy="505" rx="20" ry="14" fill="#A9764C" stroke="#82573A" stroke-width="4"/>
+            </g>
+            <g id="sandTristeC">
+              <g transform="rotate(78 600 520)">
+                <rect x="570" y="440" width="60" height="150" rx="14" fill="#C4924E" stroke="#A9713A" stroke-width="4"/>
+                <polyline points="574,470 590,458 606,470 626,458" stroke="#A9502E" stroke-width="9" fill="none"/>
+                <polyline points="574,560 590,548 606,560 626,548" stroke="#A9502E" stroke-width="9" fill="none"/>
+                <ellipse cx="589" cy="512" rx="7" ry="9" fill="#FBF6EA" stroke="#A9713A" stroke-width="2.5"/>
+                <ellipse cx="613" cy="512" rx="7" ry="9" fill="#FBF6EA" stroke="#A9713A" stroke-width="2.5"/>
+                <circle cx="590" cy="516" r="3.5" fill="#4A2410"/><circle cx="614" cy="516" r="3.5" fill="#4A2410"/>
+                <path d="M586 502 q4 -5 9 -3" stroke="#8E4A23" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M618 502 q-4 -5 -9 -3" stroke="#8E4A23" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M594 534 q9 -7 18 0" stroke="#8E4A23" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                <g stroke="#A9502E" stroke-width="3.5" stroke-linecap="round">
+                  <line x1="576" y1="590" x2="572" y2="612"/><line x1="590" y1="590" x2="588" y2="614"/>
+                  <line x1="604" y1="590" x2="604" y2="612"/><line x1="618" y1="590" x2="622" y2="614"/>
+                </g>
+              </g>
+            </g>
+            <g id="ideaC" opacity="0">
+              <polygon points="600,300 612,336 648,348 612,360 600,396 588,360 552,348 588,336" fill="#FFE28A" stroke="#E8B84C" stroke-width="4"/>
+              <circle cx="648" cy="308" r="8" fill="#FFE28A"/>
+              <circle cx="556" cy="390" r="6" fill="#FFE28A"/>
+            </g>
+            <g id="sandAbrazoC" opacity="0">
+              <path d="M706 434 Q760 466 814 434 Q818 452 812 462 Q760 494 708 462 Q702 452 706 434 Z" fill="#D9A054" stroke="#A9713A" stroke-width="4"/>
+              <polyline points="712,444 728,434 744,446 762,434 778,446 794,434 808,444" stroke="#B5542E" stroke-width="8" fill="none"/>
+              <rect x="700" y="452" width="46" height="96" rx="12" fill="#D9A054" stroke="#A9713A" stroke-width="4"/>
+              <polyline points="704,478 718,468 732,478 744,468" stroke="#B5542E" stroke-width="7" fill="none"/>
+              <ellipse cx="715" cy="502" rx="6" ry="8" fill="#FBF6EA" stroke="#A9713A" stroke-width="2.5"/>
+              <ellipse cx="734" cy="502" rx="6" ry="8" fill="#FBF6EA" stroke="#A9713A" stroke-width="2.5"/>
+              <circle cx="716" cy="504" r="3" fill="#4A2410"/><circle cx="735" cy="504" r="3" fill="#4A2410"/>
+              <path d="M716 520 q8 7 16 0" stroke="#8E4A23" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              <g stroke="#B5542E" stroke-width="3" stroke-linecap="round">
+                <line x1="704" y1="548" x2="700" y2="568"/><line x1="716" y1="548" x2="714" y2="570"/>
+                <line x1="728" y1="548" x2="728" y2="568"/><line x1="740" y1="548" x2="744" y2="570"/>
+              </g>
+            </g>
+            <g fill="#FFE9A3">
+              <circle class="mote" cx="560" cy="300" r="4"/><circle class="mote mote-2" cx="880" cy="280" r="4"/>
+            </g>
+          </svg>
+          <div class="scene-dark" id="oscuroSC" aria-hidden="true" style="opacity:0"></div>
+        </div>
+
+        <!-- Escena E · el sueño de la playa -->
+        <div class="scene" id="scE">
+          <svg class="scene-svg" id="svgSE" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" role="img" aria-label="La playa que Sandrita sueña: la sombrilla, las olas y las gaviotas, esperando.">
+            <defs>
+              <linearGradient id="gSEsky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#7FC4D8"/><stop offset="1" stop-color="#D8EEF2"/>
+              </linearGradient>
+              <linearGradient id="gSEmar" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#2E9C90"/><stop offset="1" stop-color="#5BC1B4"/>
+              </linearGradient>
+              <radialGradient id="gSEsun">
+                <stop offset=".2" stop-color="#FFF3C4" stop-opacity=".95"/><stop offset="1" stop-color="#FFF3C4" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="1440" height="900" fill="url(#gSEsky)"/>
+            <circle cx="1200" cy="130" r="150" fill="url(#gSEsun)"/>
+            <circle cx="1200" cy="130" r="46" fill="#FFE28A"/>
+            <g class="cloud-slow" fill="#FBF6EA" opacity=".9">
+              <circle cx="320" cy="150" r="36"/><circle cx="368" cy="132" r="46"/><circle cx="418" cy="152" r="32"/>
+            </g>
+            <rect x="0" y="420" width="1440" height="180" fill="url(#gSEmar)"/>
+            <path class="ola" d="M-100 470 Q-40 460 20 470 T140 470 T260 470 T380 470 T500 470 T620 470 T740 470 T860 470 T980 470 T1100 470 T1220 470 T1340 470 T1460 470 T1580 470" stroke="#DFF2F0" stroke-width="6" fill="none" opacity=".8"/>
+            <path class="ola ola-2" d="M-100 540 Q-40 530 20 540 T140 540 T260 540 T380 540 T500 540 T620 540 T740 540 T860 540 T980 540 T1100 540 T1220 540 T1340 540 T1460 540 T1580 540" stroke="#BFE8E2" stroke-width="7" fill="none" opacity=".7"/>
+            <path d="M0 600 Q400 570 800 596 T1440 590 L1440 900 L0 900 Z" fill="#E3C08F"/>
+            <path d="M0 640 Q500 615 1000 638 T1440 632" stroke="#D0A96F" stroke-width="5" fill="none" opacity=".6"/>
+            <g class="bird" stroke="#5C7A8A" stroke-width="5" fill="none" stroke-linecap="round">
+              <path d="M0 200 q13 -13 26 0"/><path d="M26 200 q13 -13 26 0"/>
+            </g>
+            <g class="bird bird-2" stroke="#5C7A8A" stroke-width="4" fill="none" stroke-linecap="round" style="transform:translateY(90px)">
+              <path d="M0 160 q11 -11 22 0"/><path d="M22 160 q11 -11 22 0"/>
+            </g>
+            <g id="anitaSE" class="hop" style="transform-origin:50% 100%">
+              <circle cx="420" cy="560" r="22" fill="#C98F62" stroke="#A9713A" stroke-width="3"/>
+              <path d="M398 552 Q400 532 420 534 Q442 532 442 556 Q440 540 428 538 Q410 534 402 546 Z" fill="#3A2A22"/>
+              <path d="M404 578 Q420 566 436 578 L442 640 L398 640 Z" fill="#5FA8A0" stroke="#47867E" stroke-width="3"/>
+              <rect x="406" y="640" width="10" height="22" rx="5" fill="#C98F62"/>
+              <rect x="424" y="640" width="10" height="22" rx="5" fill="#C98F62"/>
+              <ellipse cx="412" cy="556" rx="3.5" ry="5" fill="#33241A"/><ellipse cx="428" cy="556" rx="3.5" ry="5" fill="#33241A"/>
+              <path d="M412 568 q8 7 16 0" stroke="#8E4A23" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </g>
+            <g id="castilloSE">
+              <polygon points="330,662 350,610 370,662" fill="#D0A96F"/>
+              <rect x="322" y="656" width="56" height="30" rx="6" fill="#D0A96F"/>
+              <line x1="350" y1="612" x2="350" y2="596" stroke="#B5542E" stroke-width="3"/>
+              <polygon points="350,596 366,601 350,607" fill="#C0392B"/>
+            </g>
+            <g id="sombrillaSE">
+              <line x1="900" y1="430" x2="880" y2="700" stroke="#8E6034" stroke-width="12"/>
+              <path d="M720 470 Q900 320 1080 470 Q1035 452 990 462 Q945 434 900 452 Q855 434 810 462 Q765 452 720 470 Z" fill="#6B5AA8" stroke="#54468E" stroke-width="5"/>
+              <path d="M810 462 Q855 434 900 452 L900 320 Q850 380 810 462 Z" fill="#8FB4D9"/>
+              <path d="M990 462 Q945 434 900 452 L900 320 Q950 380 990 462 Z" fill="#8FB4D9" opacity=".9"/>
+            </g>
+            <g id="toallaSE">
+              <rect x="760" y="676" width="300" height="60" rx="14" fill="#5FA8A0" opacity=".9"/>
+            </g>
+            <g id="pomponSE">
+              <ellipse cx="900" cy="640" rx="56" ry="50" fill="#A9764C" stroke="#82573A" stroke-width="5"/>
+              <circle cx="900" cy="566" r="40" fill="#A9764C" stroke="#82573A" stroke-width="5"/>
+              <circle cx="874" cy="536" r="14" fill="#A9764C" stroke="#82573A" stroke-width="4"/>
+              <circle cx="926" cy="536" r="14" fill="#A9764C" stroke="#82573A" stroke-width="4"/>
+              <circle cx="874" cy="538" r="6.5" fill="#C99D72"/><circle cx="926" cy="538" r="6.5" fill="#C99D72"/>
+              <ellipse cx="900" cy="578" rx="19" ry="14" fill="#C99D72"/>
+              <polygon points="900,572 893,580 907,580" fill="#4A3521"/>
+              <ellipse cx="886" cy="558" rx="5.5" ry="7.5" fill="#33241A"/><ellipse cx="914" cy="558" rx="5.5" ry="7.5" fill="#33241A"/>
+              <circle cx="884" cy="555" r="2.2" fill="#FFFFFF"/><circle cx="912" cy="555" r="2.2" fill="#FFFFFF"/>
+              <ellipse cx="854" cy="668" rx="19" ry="13" fill="#A9764C" stroke="#82573A" stroke-width="4"/>
+              <ellipse cx="946" cy="668" rx="19" ry="13" fill="#A9764C" stroke="#82573A" stroke-width="4"/>
+              <path d="M846 596 Q900 628 954 596 Q958 614 952 624 Q900 656 848 624 Q842 614 846 596 Z" fill="#D9A054" stroke="#A9713A" stroke-width="4"/>
+              <polyline points="852,606 868,596 884,608 902,596 918,608 934,596 948,606" stroke="#B5542E" stroke-width="8" fill="none"/>
+              <rect x="840" y="614" width="46" height="92" rx="12" fill="#D9A054" stroke="#A9713A" stroke-width="4"/>
+              <polyline points="844,640 858,630 872,640 884,630" stroke="#B5542E" stroke-width="7" fill="none"/>
+              <ellipse cx="855" cy="664" rx="6" ry="8" fill="#FBF6EA" stroke="#A9713A" stroke-width="2.5"/>
+              <ellipse cx="874" cy="664" rx="6" ry="8" fill="#FBF6EA" stroke="#A9713A" stroke-width="2.5"/>
+              <circle cx="856" cy="666" r="3" fill="#4A2410"/><circle cx="875" cy="666" r="3" fill="#4A2410"/>
+              <path d="M856 682 q8 7 16 0" stroke="#8E4A23" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              <g stroke="#B5542E" stroke-width="3" stroke-linecap="round">
+                <line x1="844" y1="706" x2="840" y2="726"/><line x1="856" y1="706" x2="854" y2="728"/>
+                <line x1="868" y1="706" x2="868" y2="726"/><line x1="880" y1="706" x2="884" y2="728"/>
+              </g>
+            </g>
+            <g id="estrellaSE">
+              <path d="M560 760 l14 28 30 4 -22 22 6 30 -28 -14 -28 14 6 -30 -22 -22 30 -4 Z" fill="#E88BA8" stroke="#C96A88" stroke-width="4" stroke-linejoin="round"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="paws" id="paws" aria-hidden="true"></div>
+
+        <p class="cap" id="cap0">En verano, Anita le dio una misión: <strong>cuidar a Pompón</strong> hasta que llegara el frío.</p>
+        <p class="cap" id="cap1">Ella soñaba con conocer el mar… pero <strong>¿quién lleva una bufanda a la playa?</strong></p>
+        <p class="cap" id="cap2">Plan tras plan… <strong>la mamá siempre la descubría.</strong></p>
+        <p class="cap" id="cap3">"¿Por qué mis planes siempre fallan?" <strong>Quizás era tiempo de renunciar…</strong></p>
+        <p class="cap" id="cap4">Y entonces recordó: "una oportunidad más a mis planes deba dar". <strong>¡La idea!</strong></p>
+        <p class="cap" id="cap5">¿Funcionó el plan de los pasitos? <strong>El final te espera en el libro.</strong></p>
+
+        <p class="scroll-hint" id="scrollHint">seguí bajando ▾</p>
+      </div>
+    </section>
+
+    <!-- ===== 3 · El libro ===== -->
+    <section class="catalogo" id="libro">
+      <div class="catalogo-inner">
+        <div class="section-head">
+          <h2>El libro</h2>
+          <p><span class="pin" data-pin></span>Para leer bien abrigados, soñando con el mar.</p>
+        </div>
+        <div class="book-cta reveal">
+          <img class="book-cover" loading="lazy" decoding="async" src="img/sandrita_portada.jpg" alt="Portada de Sandrita: una bufandita ocre con zigzag y flequitos sonríe con picardía.">
+          <div class="book-info">
+            <span class="pin" data-pin></span>
+            <h3>Sandrita la bufandita</h3>
+            <p class="book-subtitle">El plan de los pasitos · Bibi Dipeo</p>
+            <div class="badges">
+              <span class="badge badge-age">Para toda la familia</span>
+              <span class="badge">Español</span>
+            </div>
+            <p class="book-pitch">Una bufanda de invierno, unas vacaciones de verano y muchos planes fallidos. ¿Cuál fue el plan que sí funcionó? <strong>El final te espera en el libro.</strong></p>
+            <a class="btn" href="mailto:contacto@bichitolector.com?subject=Quiero%20el%20libro%20Sandrita%20la%20bufandita">Consultá por este cuento</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4 · Cruce al otro cuento ===== -->
+    <section class="cross">
+      <span class="pin" data-pin style="left:50%; top:30px;"></span>
+      <h2>¿Y después de la playa… un vuelo?</h2>
+      <p>Cordelia, la cometa que esperó otoños enteros, también tiene una historia para contarte.</p>
+      <a class="btn" href="cordelia.html">Hacer volar a Cordelia 🪁</a>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <svg class="footer-sky" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true">
+      <rect x="30" y="40" width="60" height="50" fill="#2E2A4F"/><rect x="110" y="20" width="50" height="70" fill="#3B3560"/>
+      <rect x="180" y="50" width="70" height="40" fill="#2E2A4F"/><rect x="270" y="28" width="55" height="62" fill="#3B3560"/>
+      <rect x="345" y="45" width="65" height="45" fill="#2E2A4F"/><rect x="430" y="18" width="48" height="72" fill="#3B3560"/>
+      <rect x="500" y="42" width="70" height="48" fill="#2E2A4F"/><rect x="590" y="30" width="52" height="60" fill="#3B3560"/>
+      <rect x="662" y="52" width="66" height="38" fill="#2E2A4F"/><rect x="748" y="22" width="50" height="68" fill="#3B3560"/>
+      <rect x="820" y="44" width="64" height="46" fill="#2E2A4F"/><rect x="905" y="32" width="54" height="58" fill="#3B3560"/>
+      <rect x="980" y="48" width="68" height="42" fill="#2E2A4F"/><rect x="1070" y="25" width="52" height="65" fill="#3B3560"/>
+      <g fill="#F5D876"><rect x="45" y="52" width="8" height="10"/><rect x="122" y="32" width="8" height="10"/><rect x="200" y="60" width="8" height="10"/><rect x="285" y="40" width="8" height="10"/><rect x="360" y="55" width="8" height="10"/><rect x="444" y="30" width="8" height="10"/><rect x="516" y="52" width="8" height="10"/><rect x="604" y="42" width="8" height="10"/><rect x="762" y="34" width="8" height="10"/><rect x="836" y="54" width="8" height="10"/><rect x="920" y="44" width="8" height="10"/><rect x="1084" y="37" width="8" height="10"/></g>
+      <circle cx="1150" cy="22" r="14" fill="#F5D876"/><circle cx="1156" cy="19" r="11" fill="#1E1B3A"/>
+    </svg>
+    <div class="footer-body">
+      <p class="footer-brand">Bichito Lector · cuentos que abrigan</p>
+      <p class="footer-fine">contacto@bichitolector.com · BichitoLector.com · © 2026 Bichito Lector. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="sandrita.js"></script>
+</body>
+</html>

@@ -690,6 +690,29 @@ main { position: relative; }
   to { transform: translateX(1580px) translateY(10px); }
 }
 
+/* ===== Página Sandrita (el scroll son los pasitos) ===== */
+.pg-sandrita .thread path { stroke: #C9803A; }
+
+.pg-sandrita .stage { background: #EAD6B8; }
+
+.pg-sandrita .pin-visible {
+  background: radial-gradient(circle at 35% 30%, #F2D9A8, #C9803A 60%);
+}
+
+.ola { animation: ola 5s ease-in-out infinite alternate; transform-box: fill-box; }
+.ola-2 { animation-delay: -2.5s; animation-duration: 7s; }
+
+.spin { animation: spin 1.1s linear infinite; transform-box: fill-box; transform-origin: center; }
+
+.carbob { animation: carbob .55s ease-in-out infinite; transform-box: fill-box; }
+
+.curtain { animation: curtain 5s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 0%; }
+
+@keyframes ola { from { transform: translateX(-42px); } to { transform: translateX(42px); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes carbob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes curtain { 0%, 100% { transform: skewX(0deg); } 50% { transform: skewX(-4deg); } }
+
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
   .book-cta { grid-template-columns: 1fr; }

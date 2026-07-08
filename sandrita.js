@@ -1,11 +1,11 @@
-﻿// ===== Cordelia · el scroll es el viento =====
+// ===== Sandrita · el scroll son los pasitos =====
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const clamp01 = (v) => Math.min(1, Math.max(0, v));
 const seg = (p, a, b) => clamp01((p - a) / (b - a));
 const fade = (p, a, b, f = 0.03) => Math.min(seg(p, a, a + f), 1 - seg(p, b - f, b));
 
-// ---------- Hilo de la cometa ----------
+// ---------- Hilo de lana ----------
 const threadPath = document.getElementById("threadPath");
 const main = document.getElementById("pageMain");
 let threadLen = 0;
@@ -60,43 +60,26 @@ function updateHero() {
 // ---------- La película ----------
 const track = document.querySelector(".pelicula");
 const scA = document.getElementById("scA");
-const svgCA = document.getElementById("svgCA");
+const svgSA = document.getElementById("svgSA");
 const scB = document.getElementById("scB");
-const amigas = [1, 2, 3].map((i) => document.getElementById("amiga" + i));
-const grisB = document.getElementById("grisB");
+const sandSB = document.getElementById("sandSB");
+const manoSB = document.getElementById("manoSB");
 const scC = document.getElementById("scC");
-const cajaL = document.getElementById("cajaL");
-const cajaR = document.getElementById("cajaR");
-const luzC = document.getElementById("luzC");
-const manoC = document.getElementById("manoC");
-const oscuroC = document.getElementById("oscuroC");
-const ojosAbiertosC = document.getElementById("ojosAbiertosC");
-const ojosCerradosC = document.getElementById("ojosCerradosC");
-const scD = document.getElementById("scD");
-const cordD = document.getElementById("cordD");
-const grisD = document.getElementById("grisD");
-const hiloD = document.getElementById("hiloD");
-const inigoD = document.getElementById("inigoD");
-const amigaD1 = document.getElementById("amigaD1");
-const amigaD2 = document.getElementById("amigaD2");
+const sandTristeC = document.getElementById("sandTristeC");
+const ideaC = document.getElementById("ideaC");
+const sandAbrazoC = document.getElementById("sandAbrazoC");
+const oscuroSC = document.getElementById("oscuroSC");
+const scE = document.getElementById("scE");
+const svgSE = document.getElementById("svgSE");
+// en el sueño la playa se muestra vacía, esperándolos (sin spoiler)
+["pomponSE", "anitaSE", "castilloSE"].forEach((id) => {
+  const el = document.getElementById(id);
+  if (el) el.style.opacity = "0";
+});
 const scrollHint = document.getElementById("scrollHint");
-const ctaFilm = document.getElementById("ctaFilm");
-const caps = [0, 1, 2, 3, 4, 5, 6].map((i) => document.getElementById("cap" + i));
+const caps = [0, 1, 2, 3, 4, 5].map((i) => document.getElementById("cap" + i));
 
-// recorrido del vuelo (coordenadas del viewBox 1440x900)
-const VUELO = [
-  { x: 700, y: 990 }, { x: 420, y: 560 }, { x: 950, y: 390 }, { x: 590, y: 260 }, { x: 800, y: 195 },
-];
-
-function vueloPos(t) {
-  const n = VUELO.length - 1;
-  const i = Math.min(Math.floor(t * n), n - 1);
-  const local = t * n - i;
-  const a = VUELO[i];
-  const b = VUELO[i + 1];
-  const e = local * local * (3 - 2 * local);
-  return { x: a.x + (b.x - a.x) * e, y: a.y + (b.y - a.y) * e };
-}
+const lerp = (a, b, t) => a + (b - a) * t;
 
 function setCap(el, on) {
   el.style.opacity = on;
@@ -111,60 +94,41 @@ function updateFilm() {
 
   if (rect.top > window.innerHeight || rect.bottom < 0) return;
 
-  // TRÁILER in medias res: el misterio primero, el pasado como flashback,
-  // vuelta al presente y corte antes de la resolución.
+  // --- Escena A · la misión (0 a .26)
+  scA.style.opacity = 1 - seg(p, 0.20, 0.26);
+  svgSA.style.transform = `scale(${1.08 - 0.06 * seg(p, 0, 0.22)})`;
 
-  // --- El depósito a oscuras (0 a .18) y de nuevo al final (.66 a 1)
-  scC.style.opacity = Math.max(1 - seg(p, 0.13, 0.19), seg(p, 0.66, 0.71));
-  const abre = seg(p, 0.72, 0.80);
-  cajaL.setAttribute("transform", `translate(${-190 * abre}, 0)`);
-  cajaR.setAttribute("transform", `translate(${200 * abre}, 0)`);
-  luzC.style.opacity = String(0.8 * seg(p, 0.75, 0.84));
-  ojosCerradosC.style.opacity = String(1 - seg(p, 0.85, 0.87));
-  ojosAbiertosC.style.opacity = String(seg(p, 0.85, 0.87));
-  manoC.setAttribute("transform", `translate(${520 - 520 * seg(p, 0.87, 0.94)}, ${30 - 30 * seg(p, 0.87, 0.94)})`);
-  oscuroC.style.opacity = String(0.85 * seg(p, 0.95, 1.0));
+  // --- Escena E · EL SUEÑO de la playa (.20 a .44): la sombrilla espera vacía
+  scE.style.opacity = Math.min(seg(p, 0.20, 0.26), 1 - seg(p, 0.38, 0.44));
+  svgSE.style.transform = `scale(${1.08 - 0.06 * seg(p, 0.22, 0.42)})`;
 
-  // --- Flashback 1 · el taller (.14 a .35)
-  scA.style.opacity = Math.min(seg(p, 0.14, 0.19), 1 - seg(p, 0.30, 0.35));
-  svgCA.style.transform = `scale(${1.1 - 0.08 * seg(p, 0.14, 0.32)})`;
+  // --- Escena B · el plan y la mano de mamá (.38 a .66)
+  scB.style.opacity = Math.min(seg(p, 0.38, 0.44), 1 - seg(p, 0.60, 0.66));
+  const q1 = seg(p, 0.44, 0.51);   // se desliza a la valija
+  const q3 = seg(p, 0.575, 0.63);  // la mano la levanta
+  const sx = lerp(lerp(-240, 0, q1), 40, q3);
+  const sy = lerp(lerp(-230, 60, q1), -260, q3);
+  const srot = lerp(lerp(-4, 14, q1), -6, q3);
+  sandSB.setAttribute("transform", `translate(${sx}, ${sy}) rotate(${srot} 672 508)`);
+  const manoY = lerp(lerp(-420, 0, seg(p, 0.52, 0.57)), -300, q3);
+  manoSB.setAttribute("transform", `translate(0, ${manoY})`);
 
-  // --- Flashback 2 · el sueño de volar (.30 a .51): sin niño, sin hilo, sin spoiler
-  scD.style.opacity = Math.min(seg(p, 0.30, 0.35), 1 - seg(p, 0.46, 0.51));
-  const q = seg(p, 0.32, 0.49);
-  const pos = vueloPos(q);
-  const rot = 12 * Math.sin(q * Math.PI * 3) * (1 - q * 0.5);
-  const escala = 1 - 0.22 * q;
-  cordD.setAttribute("transform", `translate(${pos.x}, ${pos.y}) rotate(${rot}) scale(${escala})`);
-  grisD.style.opacity = "0";
-  hiloD.style.opacity = "0";
-  inigoD.style.opacity = "0";
-  amigaD1.style.opacity = "0";
-  amigaD2.style.opacity = "0";
-
-  // --- Flashback 3 · la vidriera: las amigas se van, los colores se apagan (.46 a .71)
-  scB.style.opacity = Math.min(seg(p, 0.46, 0.51), 1 - seg(p, 0.66, 0.71));
-  amigas.forEach((el, i) => {
-    const t = 0.52 + i * 0.04;
-    const qa = seg(p, t, t + 0.045);
-    el.setAttribute("transform", `translate(${qa * 340}, ${-qa * 560})`);
-    el.style.opacity = String(1 - qa);
-  });
-  grisB.style.opacity = String(0.6 * seg(p, 0.585, 0.665));
-
-  // --- CTA del tráiler
-  const ctaQ = seg(p, 0.965, 0.995);
-  ctaFilm.style.opacity = String(ctaQ);
-  ctaFilm.style.pointerEvents = ctaQ > 0.5 ? "auto" : "none";
+  // --- Escena C · la duda, la idea… y CORTE (.60 a 1)
+  scC.style.opacity = seg(p, 0.60, 0.66);
+  const ideaQ = fade(p, 0.83, 0.94, 0.03);
+  ideaC.style.opacity = String(ideaQ);
+  ideaC.setAttribute("transform", `translate(0, ${-14 * ideaQ})`);
+  sandTristeC.style.opacity = "1";
+  sandAbrazoC.style.opacity = "0";
+  oscuroSC.style.opacity = String(0.85 * seg(p, 0.955, 1.0));
 
   // --- Subtítulos
-  setCap(caps[0], fade(p, 0.015, 0.135));
-  setCap(caps[1], fade(p, 0.175, 0.29));
-  setCap(caps[2], fade(p, 0.33, 0.46));
-  setCap(caps[3], fade(p, 0.49, 0.58));
-  setCap(caps[4], fade(p, 0.60, 0.665));
-  setCap(caps[5], fade(p, 0.735, 0.87));
-  setCap(caps[6], fade(p, 0.895, 1.04));
+  setCap(caps[0], fade(p, 0.02, 0.13));
+  setCap(caps[1], fade(p, 0.24, 0.38));
+  setCap(caps[2], fade(p, 0.46, 0.58));
+  setCap(caps[3], fade(p, 0.67, 0.79));
+  setCap(caps[4], fade(p, 0.83, 0.93));
+  setCap(caps[5], fade(p, 0.945, 1.05));
 
   scrollHint.style.opacity = String(1 - seg(p, 0.005, 0.03));
 }
