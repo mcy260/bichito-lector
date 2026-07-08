@@ -291,9 +291,12 @@ async function renderCatalogo() {
         const a = document.createElement("a");
         a.className = "card-link";
         a.href = libro.link;
-        a.target = "_blank";
-        a.rel = "noopener";
-        a.textContent = /amazon\./i.test(libro.link) ? "Ver en Amazon →" : "Ver el libro →";
+        const externo = /^https?:/i.test(libro.link);
+        if (externo) {
+          a.target = "_blank";
+          a.rel = "noopener";
+        }
+        a.textContent = /amazon\./i.test(libro.link) ? "Ver en Amazon →" : (externo ? "Ver el libro →" : "Viví la historia →");
         body.appendChild(a);
       }
 

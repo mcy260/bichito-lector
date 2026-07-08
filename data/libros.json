@@ -9,6 +9,15 @@
       "audiolibro": true,
       "link": "https://www.amazon.com/dp/B0GFK696QH",
       "portada": "img/portada.jpg"
+    },
+    {
+      "id": "cordelia",
+      "titulo": "Cordelia",
+      "descripcion": "Una cometa espera, otoño tras otoño, al niño que la haga volar. Viví su historia scrolleando: acá el scroll es el viento.",
+      "idiomas": ["ES"],
+      "audiolibro": true,
+      "link": "cordelia.html",
+      "portada": "img/cordelia_portada.jpg"
     }
   ]
 }

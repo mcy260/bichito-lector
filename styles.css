@@ -639,6 +639,57 @@ main { position: relative; }
 /* ===== Reveal genérico ===== */
 .reveal { will-change: transform, opacity; }
 
+/* ===== Página Cordelia (el scroll es el viento) ===== */
+.pg-cordelia .thread path { stroke: #E8C25C; }
+
+.pg-cordelia .stage { background: #7FB9C9; }
+
+.pg-cordelia .pin-visible {
+  background: radial-gradient(circle at 35% 30%, #FAE3AC, #E8C25C 60%);
+}
+
+.mote { animation: mote 6s ease-in-out infinite; transform-box: fill-box; }
+.mote-2 { animation-delay: -2s; animation-duration: 7.5s; }
+.mote-3 { animation-delay: -4s; animation-duration: 5s; }
+
+.leaffall { animation: leaffall 9s linear infinite; transform-box: fill-box; }
+.leaffall-2 { animation-delay: -3s; animation-duration: 11s; }
+.leaffall-3 { animation-delay: -6s; animation-duration: 8s; }
+
+.bow { animation: bow 1.6s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 0%; }
+.bow-2 { animation-delay: -.5s; }
+.bow-3 { animation-delay: -1s; }
+
+.kite-sway { animation: kitesway 4.5s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 0%; }
+
+.cloud-slow { animation: drift 26s ease-in-out infinite alternate; transform-box: fill-box; }
+
+.bird { animation: birdfly 18s linear infinite; transform-box: fill-box; }
+.bird-2 { animation-delay: -9s; animation-duration: 23s; }
+
+@keyframes mote {
+  0%, 100% { transform: translate(0, 0); opacity: .35; }
+  50% { transform: translate(14px, -22px); opacity: .9; }
+}
+@keyframes leaffall {
+  0% { transform: translate(0, -60px) rotate(0deg); opacity: 0; }
+  12% { opacity: 1; }
+  100% { transform: translate(-120px, 560px) rotate(300deg); opacity: 0; }
+}
+@keyframes bow {
+  0%, 100% { transform: rotate(-14deg); }
+  50% { transform: rotate(16deg); }
+}
+@keyframes kitesway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3.5deg); }
+}
+@keyframes birdfly {
+  from { transform: translateX(-140px) translateY(0); }
+  50% { transform: translateX(700px) translateY(-40px); }
+  to { transform: translateX(1580px) translateY(10px); }
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
   .book-cta { grid-template-columns: 1fr; }
