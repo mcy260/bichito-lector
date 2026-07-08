@@ -305,11 +305,6 @@ async function renderCatalogo() {
       observer.observe(art);
     });
 
-    const soon = document.createElement("article");
-    soon.className = "card card-soon reveal";
-    soon.innerHTML = '<div class="card-img card-img-soon"><svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="34" r="20" fill="none" stroke="#C9A876" stroke-width="6"/><line x1="54" y1="50" x2="68" y2="66" stroke="#C9A876" stroke-width="8" stroke-linecap="round"/></svg></div><div class="card-body"><h3>Próximo caso…</h3><p>La colección de Bichito Lector sigue creciendo con nuevas historias ilustradas.</p><div class="badges"><span class="badge badge-soon">Próximamente</span></div></div>';
-    cont.appendChild(soon);
-    observer.observe(soon);
   } catch (e) {
     /* sin datos: queda el catálogo estático del HTML */
   }
