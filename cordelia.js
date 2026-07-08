@@ -68,6 +68,7 @@ const scC = document.getElementById("scC");
 const cajaL = document.getElementById("cajaL");
 const cajaR = document.getElementById("cajaR");
 const luzC = document.getElementById("luzC");
+const manoC = document.getElementById("manoC");
 const ojosAbiertosC = document.getElementById("ojosAbiertosC");
 const ojosCerradosC = document.getElementById("ojosCerradosC");
 const scD = document.getElementById("scD");
@@ -129,6 +130,8 @@ function updateFilm() {
   luzC.style.opacity = String(0.8 * seg(p, 0.58, 0.67));
   ojosCerradosC.style.opacity = String(1 - seg(p, 0.665, 0.685));
   ojosAbiertosC.style.opacity = String(seg(p, 0.665, 0.685));
+  // la manito de Iñigo entra desde la derecha cuando ella abre los ojos
+  manoC.setAttribute("transform", `translate(${420 - 420 * seg(p, 0.64, 0.70)}, ${30 - 30 * seg(p, 0.64, 0.70)})`);
 
   // --- Escena D · el vuelo: los colores vuelven (.70 a 1)
   scD.style.opacity = seg(p, 0.70, 0.75);
@@ -138,7 +141,7 @@ function updateFilm() {
   const escala = 1 - 0.25 * q;
   cordD.setAttribute("transform", `translate(${pos.x}, ${pos.y}) rotate(${rot}) scale(${escala})`);
   grisD.style.opacity = String(0.55 * (1 - seg(p, 0.76, 0.88)));
-  const manoX = 712, manoY = 800;
+  const manoX = 842, manoY = 796;
   const sag = 60 + 80 * (1 - q);
   hiloD.setAttribute("d", `M ${manoX} ${manoY} Q ${(manoX + pos.x) / 2} ${(manoY + pos.y) / 2 + sag} ${pos.x} ${pos.y + 60 * escala}`);
   hiloD.style.opacity = String(0.9 * seg(p, 0.74, 0.78));
