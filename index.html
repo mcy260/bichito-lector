@@ -1,0 +1,738 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bichito Lector · Cuentos infantiles con misterio</title>
+  <meta name="description" content="Bichito Lector es una editorial de cuentos infantiles ilustrados. Descubrí Las aventuras de Lady Patitas Rosadas: el misterio de las latas de atún. En español, inglés y portugués.">
+  <meta name="theme-color" content="#1E1B3A">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bichito Lector">
+  <meta property="og:title" content="Bichito Lector · Cuentos infantiles con misterio">
+  <meta property="og:description" content="Editorial de cuentos infantiles ilustrados. Descubrí el misterio de las latas de atún con Lady Patitas Rosadas — cada scroll es una pista.">
+  <meta property="og:image" content="img/portada.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="header" id="inicio">
+    <a class="logo" href="#inicio" aria-label="Bichito Lector, inicio">
+      <svg class="logo-bug" viewBox="0 0 40 32" aria-hidden="true">
+        <circle cx="9" cy="20" r="7" fill="#8BC34A"/>
+        <circle cx="19" cy="18" r="7" fill="#AED581"/>
+        <circle cx="29" cy="16" r="8" fill="#8BC34A"/>
+        <circle cx="26" cy="13" r="3.2" fill="#FBF6EA" stroke="#3A2E22" stroke-width="1.4"/>
+        <circle cx="33" cy="12" r="3.2" fill="#FBF6EA" stroke="#3A2E22" stroke-width="1.4"/>
+        <circle cx="26.6" cy="13.4" r="1.3" fill="#3A2E22"/>
+        <circle cx="33.6" cy="12.4" r="1.3" fill="#3A2E22"/>
+        <path d="M27 6 Q28 2 25 1" stroke="#3A2E22" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        <path d="M33 6 Q34 2 37 1" stroke="#3A2E22" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">Bichito <em>Lector</em></span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#misterio">El caso</a>
+      <a href="#catalogo">Cuentos</a>
+      <a href="#editorial">La editorial</a>
+      <a href="https://www.amazon.com/dp/B0GFK696QH" target="_blank" rel="noopener" class="btn btn-small">Comprar el libro</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  </header>
+
+  <main id="pageMain">
+    <!-- Hilo rojo (se dibuja con el scroll) -->
+    <svg class="thread" id="thread" aria-hidden="true"><path id="threadPath" d="" fill="none"/></svg>
+
+    <!-- ===== 1 · Hero: el balcón ===== -->
+    <section class="hero">
+      <div class="hero-bg" id="heroBg">
+        <img src="img/hero_balcon.jpg" fetchpriority="high" alt="Lady Patitas Rosadas mira Gatópolis de noche desde su balcón, bajo la luna creciente.">
+      </div>
+      <div class="hero-veil" aria-hidden="true"></div>
+      <div class="hero-content" id="heroContent">
+        <p class="kicker">Editorial de cuentos infantiles</p>
+        <h1>Esta noche, en Gatópolis,<br>desapareció todo el atún.</h1>
+        <p class="hero-sub">Cuentos ilustrados para leer, mirar y resolver en familia.<br>Bajá despacito: <strong>cada scroll es una pista.</strong></p>
+        <a href="#misterio" class="btn btn-hero">Seguir la primera pista ↓</a>
+      </div>
+      <span class="pin" data-pin style="left:50%; bottom:40px;"></span>
+    </section>
+
+    <!-- ===== 2 · La película del caso (el scroll es la línea de tiempo) ===== -->
+    <section class="pelicula" id="misterio">
+      <span class="pin" data-pin style="left:12%; top:20%;"></span>
+      <span class="pin" data-pin style="right:10%; top:65%;"></span>
+      <div class="stage" id="stage">
+
+        <div class="scene" id="scA">
+          <svg class="scene-svg" id="svgA" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Gatópolis de día: gatitos jugando en el parque de la fuente mientras atardece.">
+            <defs>
+              <linearGradient id="gAsky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#6FC3DF"/><stop offset=".85" stop-color="#C9EDF3"/>
+              </linearGradient>
+              <radialGradient id="gAsun">
+                <stop offset=".25" stop-color="#FFF3C4"/><stop offset=".7" stop-color="#FFD66B"/><stop offset="1" stop-color="#FFD66B" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="gAground" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#E2AC6B"/><stop offset="1" stop-color="#C68A4C"/>
+              </linearGradient>
+              <pattern id="gAwin" width="48" height="58" patternUnits="userSpaceOnUse">
+                <rect x="13" y="15" width="20" height="26" rx="3" fill="#E7F5FA" opacity=".9"/>
+              </pattern>
+            </defs>
+            <rect width="1440" height="900" fill="url(#gAsky)"/>
+            <circle id="sunA" cx="640" cy="165" r="85" fill="url(#gAsun)"/>
+            <g id="moonA">
+              <circle cx="810" cy="-160" r="44" fill="#F7E29B"/>
+              <circle cx="827" cy="-172" r="36" fill="#7EC8E3"/>
+            </g>
+            <g class="cloud cloud-1" fill="#FFFFFF">
+              <circle cx="350" cy="148" r="32"/><circle cx="392" cy="132" r="42"/><circle cx="438" cy="148" r="28"/>
+              <rect x="318" y="142" width="150" height="36" rx="18"/>
+            </g>
+            <g class="cloud cloud-2" fill="#F0F9FB">
+              <circle cx="990" cy="92" r="26"/><circle cx="1024" cy="80" r="33"/><circle cx="1058" cy="92" r="23"/>
+              <rect x="964" y="86" width="120" height="30" rx="15"/>
+            </g>
+            <g>
+              <rect x="40" y="230" width="100" height="320" fill="#A9D3E4"/><rect x="40" y="230" width="100" height="320" fill="url(#gAwin)"/>
+              <rect x="168" y="168" width="82" height="382" fill="#9CC9DC"/><rect x="168" y="168" width="82" height="382" fill="url(#gAwin)"/>
+              <rect x="560" y="200" width="90" height="350" fill="#A9D3E4"/><rect x="560" y="200" width="90" height="350" fill="url(#gAwin)"/>
+              <rect x="1230" y="216" width="96" height="334" fill="#9CC9DC"/><rect x="1230" y="216" width="96" height="334" fill="url(#gAwin)"/>
+              <rect x="1344" y="168" width="76" height="382" fill="#A9D3E4"/><rect x="1344" y="168" width="76" height="382" fill="url(#gAwin)"/>
+            </g>
+            <g id="catBuilding">
+              <polygon points="733,318 766,232 812,318" fill="#DCC291" stroke="#B99B66" stroke-width="6" stroke-linejoin="round"/>
+              <polygon points="752,302 769,254 792,302" fill="#C3A470"/>
+              <polygon points="930,318 976,232 1009,318" fill="#DCC291" stroke="#B99B66" stroke-width="6" stroke-linejoin="round"/>
+              <polygon points="950,302 973,254 990,302" fill="#C3A470"/>
+              <rect x="705" y="302" width="330" height="248" rx="34" fill="#DCC291" stroke="#B99B66" stroke-width="6"/>
+              <ellipse cx="800" cy="398" rx="25" ry="33" fill="#4A3A28"/>
+              <ellipse cx="800" cy="398" rx="25" ry="33" fill="none" stroke="#8F7448" stroke-width="5"/>
+              <circle cx="792" cy="386" r="6" fill="#F2FAFC" opacity=".75"/>
+              <ellipse cx="940" cy="398" rx="25" ry="33" fill="#4A3A28"/>
+              <ellipse cx="940" cy="398" rx="25" ry="33" fill="none" stroke="#8F7448" stroke-width="5"/>
+              <circle cx="932" cy="386" r="6" fill="#F2FAFC" opacity=".75"/>
+              <polygon points="870,432 848,458 892,458" fill="#4A3A28"/>
+              <g stroke="#6B4A2A" stroke-width="6" stroke-linecap="round">
+                <line x1="742" y1="446" x2="668" y2="436"/><line x1="742" y1="468" x2="670" y2="478"/>
+                <line x1="998" y1="446" x2="1072" y2="436"/><line x1="998" y1="468" x2="1070" y2="478"/>
+              </g>
+              <rect x="845" y="488" width="52" height="62" rx="10" fill="#8B5E3C" stroke="#6B4732" stroke-width="4"/>
+              <circle cx="884" cy="522" r="4" fill="#DCC291"/>
+            </g>
+            <g id="pawBuilding">
+              <rect x="1075" y="330" width="200" height="220" rx="22" fill="#A8BF8A" stroke="#85996B" stroke-width="6"/>
+              <circle cx="1128" cy="388" r="16" fill="#6B7A52"/><circle cx="1168" cy="372" r="16" fill="#6B7A52"/>
+              <circle cx="1208" cy="388" r="16" fill="#6B7A52"/><ellipse cx="1168" cy="428" rx="27" ry="21" fill="#6B7A52"/>
+              <rect x="1100" y="474" width="32" height="38" rx="5" fill="#74875A"/>
+              <rect x="1208" y="474" width="32" height="38" rx="5" fill="#74875A"/>
+            </g>
+            <g id="winsA" fill="#FFE28A" opacity="0">
+              <rect x="60" y="268" width="24" height="30" rx="3"/><rect x="188" y="216" width="24" height="30" rx="3"/>
+              <rect x="580" y="240" width="24" height="30" rx="3"/><rect x="1252" y="254" width="24" height="30" rx="3"/>
+              <rect x="1364" y="216" width="24" height="30" rx="3"/>
+              <rect x="1100" y="474" width="32" height="38" rx="5"/><rect x="1208" y="474" width="32" height="38" rx="5"/>
+              <ellipse cx="800" cy="398" rx="20" ry="28"/><ellipse cx="940" cy="398" rx="20" ry="28"/>
+            </g>
+            <rect x="0" y="540" width="1440" height="360" fill="url(#gAground)"/>
+            <path d="M0 588 Q400 562 720 588 T1440 582 L1440 646 Q1000 620 720 638 T0 646 Z" fill="#E8CBA0" stroke="#C9A876" stroke-width="4" opacity=".9"/>
+            <g id="catTree">
+              <rect x="120" y="762" width="156" height="16" rx="8" fill="#B14A31"/>
+              <rect x="186" y="636" width="18" height="128" fill="#C0563B"/>
+              <rect x="142" y="618" width="110" height="16" rx="8" fill="#B14A31"/>
+              <rect x="154" y="684" width="14" height="80" fill="#C0563B"/>
+              <line x1="252" y1="632" x2="252" y2="676" stroke="#8B5E3C" stroke-width="4"/>
+              <circle cx="252" cy="686" r="12" fill="#F2C14E" stroke="#D9A035" stroke-width="3"/>
+            </g>
+            <g class="sway" style="transform-origin:50% 100%">
+              <rect x="404" y="640" width="18" height="120" fill="#8B5E3C" stroke="#6B4732" stroke-width="3"/>
+              <circle cx="413" cy="600" r="62" fill="#7FA36C"/><circle cx="376" cy="628" r="40" fill="#95B77E"/>
+              <circle cx="450" cy="628" r="38" fill="#95B77E"/><circle cx="413" cy="572" r="34" fill="#95B77E" opacity=".7"/>
+            </g>
+            <g class="sway sway-late" style="transform-origin:50% 100%">
+              <rect x="1246" y="650" width="18" height="118" fill="#8B5E3C" stroke="#6B4732" stroke-width="3"/>
+              <circle cx="1255" cy="612" r="58" fill="#7FA36C"/><circle cx="1298" cy="640" r="36" fill="#95B77E"/>
+              <circle cx="1216" cy="642" r="34" fill="#95B77E"/>
+            </g>
+            <g id="fountain">
+              <ellipse cx="720" cy="742" rx="172" ry="45" fill="#6E98A8" stroke="#567A88" stroke-width="5"/>
+              <ellipse cx="720" cy="728" rx="142" ry="33" fill="#BFE3EC"/>
+              <ellipse cx="720" cy="728" rx="100" ry="22" fill="none" stroke="#DFF2F7" stroke-width="3" opacity=".8"/>
+              <rect x="703" y="622" width="34" height="100" rx="9" fill="#6E98A8" stroke="#567A88" stroke-width="4"/>
+              <ellipse cx="720" cy="620" rx="60" ry="17" fill="#7FA8B8" stroke="#567A88" stroke-width="4"/>
+              <rect x="712" y="558" width="16" height="56" rx="8" fill="#6E98A8" stroke="#567A88" stroke-width="3"/>
+              <circle cx="720" cy="554" r="9" fill="#7FA8B8" stroke="#567A88" stroke-width="3"/>
+              <path class="jet" style="transform-origin:50% 100%" d="M714 556 Q676 610 692 706" stroke="#DFF2F7" stroke-width="9" fill="none" stroke-linecap="round"/>
+              <path class="jet jet-late" style="transform-origin:50% 100%" d="M726 556 Q764 610 748 706" stroke="#DFF2F7" stroke-width="9" fill="none" stroke-linecap="round"/>
+              <rect class="jet jet-later" x="713" y="512" width="14" height="52" rx="7" fill="#DFF2F7" style="transform-origin:50% 100%"/>
+              <circle class="tw" cx="668" cy="640" r="5" fill="#DFF2F7"/>
+              <circle class="tw tw-2" cx="776" cy="628" r="5" fill="#DFF2F7"/>
+            </g>
+            <g stroke="#5E7D4E" stroke-width="4" stroke-linecap="round">
+              <line x1="330" y1="838" x2="330" y2="818"/><line x1="352" y1="842" x2="352" y2="824"/>
+              <line x1="1130" y1="852" x2="1130" y2="832"/><line x1="1108" y1="856" x2="1108" y2="840"/>
+            </g>
+            <circle cx="330" cy="812" r="8" fill="#F2C14E"/><circle cx="352" cy="818" r="7" fill="#E88BA8"/>
+            <circle cx="1130" cy="826" r="8" fill="#E88BA8"/><circle cx="1108" cy="834" r="7" fill="#F2C14E"/>
+            <g id="catRun" class="run">
+              <path class="tailwag" style="transform-origin:100% 100%" d="M-52 792 Q-94 772 -82 734" stroke="#F2994E" stroke-width="16" fill="none" stroke-linecap="round"/>
+              <ellipse cx="0" cy="795" rx="48" ry="27" fill="#F2994E" stroke="#C9713A" stroke-width="5"/>
+              <path d="M-24 772 q7 9 0 17" stroke="#C9713A" stroke-width="5" fill="none" stroke-linecap="round"/>
+              <path d="M-4 768 q7 9 0 17" stroke="#C9713A" stroke-width="5" fill="none" stroke-linecap="round"/>
+              <ellipse cx="-24" cy="820" rx="10" ry="7" fill="#F2994E" stroke="#C9713A" stroke-width="4"/>
+              <ellipse cx="22" cy="820" rx="10" ry="7" fill="#F2994E" stroke="#C9713A" stroke-width="4"/>
+              <circle cx="46" cy="768" r="27" fill="#F2994E" stroke="#C9713A" stroke-width="5"/>
+              <polygon points="30,748 20,718 46,736" fill="#F2994E" stroke="#C9713A" stroke-width="4" stroke-linejoin="round"/>
+              <polygon points="33,744 28,728 42,738" fill="#F2B8C6"/>
+              <ellipse cx="56" cy="778" rx="13" ry="10" fill="#FBF6EA"/>
+              <ellipse cx="52" cy="764" rx="5.5" ry="7.5" fill="#33283D"/>
+              <circle cx="50" cy="761" r="2.4" fill="#FFFFFF"/>
+              <polygon points="60,772 66,776 60,780" fill="#E8879E"/>
+              <g stroke="#C9713A" stroke-width="2.5" stroke-linecap="round"><line x1="68" y1="770" x2="82" y2="766"/><line x1="68" y1="778" x2="82" y2="780"/></g>
+            </g>
+            <g id="catSit">
+              <rect x="1010" y="716" width="190" height="12" rx="6" fill="#C0563B" stroke="#96412C" stroke-width="3"/>
+              <rect x="1010" y="756" width="190" height="16" rx="8" fill="#C0563B" stroke="#96412C" stroke-width="3"/>
+              <rect x="1028" y="772" width="13" height="44" fill="#96412C"/><rect x="1168" y="772" width="13" height="44" fill="#96412C"/>
+              <path class="tailwag" style="transform-origin:0% 100%" d="M1140 750 Q1176 736 1170 704" stroke="#A8AEC2" stroke-width="13" fill="none" stroke-linecap="round"/>
+              <ellipse cx="1104" cy="736" rx="36" ry="28" fill="#A8AEC2" stroke="#7E8499" stroke-width="5"/>
+              <ellipse cx="1104" cy="746" rx="16" ry="12" fill="#E4E7EF"/>
+              <circle cx="1104" cy="700" r="24" fill="#A8AEC2" stroke="#7E8499" stroke-width="5"/>
+              <polygon points="1089,684 1082,660 1100,674" fill="#A8AEC2" stroke="#7E8499" stroke-width="4" stroke-linejoin="round"/>
+              <polygon points="1119,684 1126,660 1108,674" fill="#A8AEC2" stroke="#7E8499" stroke-width="4" stroke-linejoin="round"/>
+              <polygon points="1091,680 1088,668 1098,676" fill="#F2B8C6"/><polygon points="1117,680 1120,668 1110,676" fill="#F2B8C6"/>
+              <path d="M1092 682 q4 8 0 14" stroke="#7E8499" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <path d="M1104 680 q4 8 0 14" stroke="#7E8499" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <ellipse cx="1096" cy="702" rx="5" ry="7" fill="#33283D"/><ellipse cx="1112" cy="702" rx="5" ry="7" fill="#33283D"/>
+              <circle cx="1094" cy="699" r="2.2" fill="#FFFFFF"/><circle cx="1110" cy="699" r="2.2" fill="#FFFFFF"/>
+              <polygon points="1101,712 1107,712 1104,716" fill="#E8879E"/>
+            </g>
+            <g id="catHop" class="hop" style="transform-origin:50% 100%">
+              <path class="tailwag" style="transform-origin:0% 100%" d="M552 800 Q582 788 576 760" stroke="#FBF6EA" stroke-width="11" fill="none" stroke-linecap="round"/>
+              <ellipse cx="520" cy="798" rx="32" ry="24" fill="#FBF6EA" stroke="#D9CBB4" stroke-width="5"/>
+              <circle cx="520" cy="760" r="21" fill="#FBF6EA" stroke="#D9CBB4" stroke-width="5"/>
+              <polygon points="507,746 500,724 517,738" fill="#FBF6EA" stroke="#D9CBB4" stroke-width="4" stroke-linejoin="round"/>
+              <polygon points="533,746 540,724 523,738" fill="#FBF6EA" stroke="#D9CBB4" stroke-width="4" stroke-linejoin="round"/>
+              <polygon points="509,742 506,730 515,738" fill="#F2B8C6"/><polygon points="531,742 534,730 525,738" fill="#F2B8C6"/>
+              <ellipse cx="513" cy="760" rx="4.5" ry="6.5" fill="#33283D"/><ellipse cx="527" cy="760" rx="4.5" ry="6.5" fill="#33283D"/>
+              <circle cx="511" cy="757" r="2" fill="#FFFFFF"/><circle cx="525" cy="757" r="2" fill="#FFFFFF"/>
+              <polygon points="517,770 523,770 520,774" fill="#E8879E"/>
+            </g>
+          </svg>
+          <div class="night-veil" id="nightVeil" aria-hidden="true"></div>
+        </div>
+
+        <div class="scene" id="scB">
+          <svg class="scene-svg" id="svgB" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Lady Patitas Rosadas vigila la ciudad de noche desde su balcón mientras dos figuras cruzan el parque.">
+            <defs>
+              <linearGradient id="gBsky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#262052"/><stop offset="1" stop-color="#453B72"/>
+              </linearGradient>
+              <radialGradient id="gBmoon">
+                <stop offset=".25" stop-color="#FFF3C4" stop-opacity=".85"/><stop offset="1" stop-color="#FFF3C4" stop-opacity="0"/>
+              </radialGradient>
+              <pattern id="gBwin" width="40" height="52" patternUnits="userSpaceOnUse">
+                <rect x="11" y="13" width="16" height="22" rx="2" fill="#F7D77E" opacity=".9"/>
+              </pattern>
+              <pattern id="gBwin2" width="44" height="56" patternUnits="userSpaceOnUse">
+                <rect x="13" y="15" width="15" height="20" rx="2" fill="#C9AE5E" opacity=".55"/>
+              </pattern>
+            </defs>
+            <rect width="1440" height="900" fill="url(#gBsky)"/>
+            <g fill="#F5D876">
+              <circle class="tw" cx="150" cy="90" r="3"/><circle class="tw tw-2" cx="420" cy="60" r="2.4"/>
+              <circle class="tw tw-3" cx="560" cy="180" r="2"/><circle class="tw tw-2" cx="980" cy="70" r="2.4"/>
+              <circle class="tw" cx="1240" cy="120" r="3"/><circle class="tw tw-3" cx="880" cy="200" r="2.4"/>
+              <circle class="tw tw-2" cx="1100" cy="230" r="2"/><circle class="tw" cx="260" cy="210" r="2"/>
+              <circle class="tw tw-3" cx="480" cy="130" r="2"/><circle class="tw" cx="1340" cy="200" r="2.4"/>
+            </g>
+            <g id="moonB">
+              <circle class="moon-halo" cx="700" cy="160" r="150" fill="url(#gBmoon)"/>
+              <circle cx="700" cy="160" r="58" fill="#F7E29B" stroke="#E3C878" stroke-width="3"/>
+              <circle cx="686" cy="140" r="10" fill="#EBD187"/>
+              <circle cx="716" cy="176" r="6" fill="#EBD187"/>
+              <circle cx="722" cy="146" r="5" fill="#EBD187"/>
+            </g>
+            <g>
+              <rect x="0" y="290" width="120" height="340" fill="#332C5E"/><rect x="0" y="290" width="120" height="340" fill="url(#gBwin2)"/>
+              <rect x="150" y="236" width="100" height="394" fill="#332C5E"/><rect x="150" y="236" width="100" height="394" fill="url(#gBwin2)"/>
+              <rect x="850" y="330" width="120" height="300" fill="#332C5E"/><rect x="850" y="330" width="120" height="300" fill="url(#gBwin2)"/>
+              <rect x="1280" y="246" width="110" height="384" fill="#332C5E"/><rect x="1280" y="246" width="110" height="384" fill="url(#gBwin2)"/>
+            </g>
+            <g>
+              <rect x="280" y="330" width="130" height="300" fill="#2A2452"/><rect x="280" y="330" width="130" height="300" fill="url(#gBwin)"/>
+              <rect x="440" y="262" width="100" height="368" fill="#2A2452"/><rect x="440" y="262" width="100" height="368" fill="url(#gBwin)"/>
+              <rect x="980" y="270" width="104" height="360" fill="#2A2452"/><rect x="980" y="270" width="104" height="360" fill="url(#gBwin)"/>
+              <rect x="1120" y="326" width="124" height="304" fill="#2A2452"/><rect x="1120" y="326" width="124" height="304" fill="url(#gBwin)"/>
+            </g>
+            <g id="catTowerB">
+              <polygon points="590,394 612,336 642,394" fill="#3A3164"/>
+              <polygon points="742,394 772,336 794,394" fill="#3A3164"/>
+              <rect x="576" y="386" width="232" height="244" rx="24" fill="#3A3164"/>
+              <ellipse class="flick" cx="646" cy="470" rx="17" ry="23" fill="#F7D77E"/>
+              <ellipse class="flick flick-2" cx="738" cy="470" rx="17" ry="23" fill="#F7D77E"/>
+              <g stroke="#2A2452" stroke-width="5" stroke-linecap="round">
+                <line x1="606" y1="510" x2="566" y2="504"/><line x1="778" y1="510" x2="818" y2="504"/>
+              </g>
+            </g>
+            <rect x="0" y="618" width="1440" height="282" fill="#201C42"/>
+            <path d="M0 656 Q500 632 900 656 T1440 650 L1440 716 Q900 692 500 710 T0 716 Z" fill="#322B5C" opacity=".85"/>
+            <g fill="#262150">
+              <ellipse cx="240" cy="700" rx="90" ry="34"/><ellipse cx="1180" cy="710" rx="100" ry="36"/>
+              <ellipse cx="960" cy="736" rx="80" ry="28"/>
+            </g>
+            <g id="fountainB">
+              <ellipse cx="620" cy="740" rx="80" ry="20" fill="#2A2452"/>
+              <rect x="612" y="678" width="16" height="52" rx="6" fill="#2A2452"/>
+              <ellipse cx="620" cy="676" rx="28" ry="8" fill="#332C5E"/>
+              <ellipse cx="620" cy="734" rx="54" ry="11" fill="#8FA0D0" opacity=".35"/>
+            </g>
+            <g id="suspects">
+              <g class="walk">
+                <path d="M-34 700 Q-58 688 -52 668" stroke="#4A4160" stroke-width="10" fill="none" stroke-linecap="round"/>
+                <ellipse cx="0" cy="698" rx="27" ry="19" fill="#4A4160" stroke="#383152" stroke-width="3"/>
+                <circle cx="22" cy="678" r="15" fill="#4A4160" stroke="#383152" stroke-width="3"/>
+                <ellipse cx="22" cy="662" rx="19" ry="5" fill="#332D4E"/>
+                <rect x="14" y="648" width="16" height="14" rx="5" fill="#332D4E"/>
+                <circle cx="27" cy="676" r="2" fill="#F7E29B"/>
+              </g>
+              <g class="walk walk-2">
+                <path d="M-102 712 Q-124 700 -118 682" stroke="#5C5170" stroke-width="9" fill="none" stroke-linecap="round"/>
+                <ellipse cx="-70" cy="710" rx="24" ry="17" fill="#5C5170" stroke="#4A4160" stroke-width="3"/>
+                <circle cx="-50" cy="692" r="13" fill="#5C5170" stroke="#4A4160" stroke-width="3"/>
+                <polygon points="-58,682 -63,668 -51,676" fill="#5C5170"/><polygon points="-42,682 -37,668 -49,676" fill="#5C5170"/>
+                <circle cx="-46" cy="690" r="2" fill="#F7E29B"/>
+              </g>
+            </g>
+            <g transform="translate(-250,0)">
+            <g id="lady" class="idle">
+              <path class="tailwag-slow" style="transform-origin:100% 100%" d="M1005 852 Q940 800 980 726" stroke="#F2994E" stroke-width="30" fill="none" stroke-linecap="round"/>
+              <path d="M962 776 q14 10 26 2" stroke="#C9713A" stroke-width="9" fill="none" stroke-linecap="round"/>
+              <path d="M972 806 q14 10 26 2" stroke="#C9713A" stroke-width="9" fill="none" stroke-linecap="round"/>
+              <circle cx="982" cy="724" r="16" fill="#FBF6EA"/>
+              <path d="M990 900 Q1000 756 1104 748 Q1208 756 1218 900 Z" fill="#8B5E3C" stroke="#6B4732" stroke-width="5"/>
+              <g stroke="#A9764C" stroke-width="7" opacity=".9">
+                <line x1="1052" y1="756" x2="1052" y2="900"/><line x1="1104" y1="748" x2="1104" y2="900"/><line x1="1156" y1="756" x2="1156" y2="900"/>
+                <line x1="1006" y1="800" x2="1202" y2="800"/><line x1="996" y1="852" x2="1212" y2="852"/>
+              </g>
+              <g stroke="#B3543C" stroke-width="2.5" opacity=".8">
+                <line x1="1078" y1="752" x2="1078" y2="900"/><line x1="1130" y1="752" x2="1130" y2="900"/>
+                <line x1="1000" y1="826" x2="1208" y2="826"/><line x1="994" y1="878" x2="1214" y2="878"/>
+              </g>
+              <ellipse cx="962" cy="806" rx="17" ry="13" fill="#FBF6EA" stroke="#D9CBB4" stroke-width="4"/>
+              <g fill="#F2DCA6" stroke="#D9BC7E" stroke-width="2">
+                <circle cx="1058" cy="744" r="9"/><circle cx="1081" cy="737" r="9"/><circle cx="1104" cy="735" r="9"/>
+                <circle cx="1127" cy="737" r="9"/><circle cx="1150" cy="744" r="9"/>
+              </g>
+              <g fill="#FFFFFF" opacity=".8">
+                <circle cx="1055" cy="741" r="2.6"/><circle cx="1078" cy="734" r="2.6"/><circle cx="1101" cy="732" r="2.6"/>
+                <circle cx="1124" cy="734" r="2.6"/><circle cx="1147" cy="741" r="2.6"/>
+              </g>
+              <circle cx="1104" cy="668" r="62" fill="#F2994E" stroke="#C9713A" stroke-width="5"/>
+              <path d="M1082 618 q5 15 0 24" stroke="#C9713A" stroke-width="7" fill="none" stroke-linecap="round"/>
+              <path d="M1104 612 q5 15 0 24" stroke="#C9713A" stroke-width="7" fill="none" stroke-linecap="round"/>
+              <path d="M1126 618 q5 15 0 24" stroke="#C9713A" stroke-width="7" fill="none" stroke-linecap="round"/>
+              <path d="M1150 622 A62 62 0 0 1 1162 690" stroke="#F7E29B" stroke-width="5" fill="none" stroke-linecap="round" opacity=".55"/>
+              <g class="eartwitch" style="transform-origin:72% 76%">
+                <polygon points="1054,634 1040,588 1078,610" fill="#F2994E" stroke="#C9713A" stroke-width="4" stroke-linejoin="round"/>
+                <polygon points="1057,626 1050,602 1070,614" fill="#D96A4B"/>
+              </g>
+              <polygon points="1154,634 1168,588 1130,610" fill="#F2994E" stroke="#C9713A" stroke-width="4" stroke-linejoin="round"/>
+              <polygon points="1151,626 1158,602 1138,614" fill="#D96A4B"/>
+              <g id="ladyHat">
+                <path d="M1040 632 Q1104 578 1168 632 L1168 646 Q1104 612 1040 646 Z" fill="#8B5E3C" stroke="#6B4732" stroke-width="4"/>
+                <ellipse cx="1104" cy="598" rx="48" ry="25" fill="#8B5E3C" stroke="#6B4732" stroke-width="4"/>
+                <g stroke="#A9764C" stroke-width="4" opacity=".9">
+                  <line x1="1080" y1="580" x2="1080" y2="618"/><line x1="1128" y1="580" x2="1128" y2="618"/>
+                  <line x1="1062" y1="598" x2="1146" y2="598"/>
+                </g>
+                <circle cx="1104" cy="576" r="8" fill="#A9764C" stroke="#6B4732" stroke-width="3"/>
+                <path d="M1088 578 Q1096 568 1104 576 Q1112 568 1120 578" stroke="#6B4732" stroke-width="4" fill="#A9764C"/>
+              </g>
+            </g>
+            </g>
+            <g id="balcony">
+              <rect x="0" y="878" width="1440" height="22" fill="#CFC8E0"/>
+              <rect x="0" y="800" width="1440" height="18" rx="9" fill="#CFC8E0" stroke="#A79FC2" stroke-width="3"/>
+              <g stroke="#B8AECE" stroke-width="20" fill="none">
+                <path d="M70 818 q-16 30 0 60"/><path d="M250 818 q-16 30 0 60"/>
+                <path d="M430 818 q-16 30 0 60"/><path d="M610 818 q-16 30 0 60"/>
+                <path d="M790 818 q-16 30 0 60"/><path d="M1330 818 q-16 30 0 60"/>
+              </g>
+              <g stroke="#948AAD" stroke-width="6" fill="none" opacity=".7">
+                <path d="M76 822 q-12 26 0 52"/><path d="M256 822 q-12 26 0 52"/>
+                <path d="M436 822 q-12 26 0 52"/><path d="M616 822 q-12 26 0 52"/>
+                <path d="M796 822 q-12 26 0 52"/><path d="M1336 822 q-12 26 0 52"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <div class="scene" id="scC">
+          <svg class="scene-svg" id="svgC" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" role="img" aria-label="El Dr. Molly, un gato blanco con sombrero y lentes, camina de noche hacia un farol escondiendo una lata.">
+            <defs>
+              <linearGradient id="gCsky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#1A1638"/><stop offset="1" stop-color="#2E2752"/>
+              </linearGradient>
+              <radialGradient id="gCglow">
+                <stop offset=".2" stop-color="#FFE9A3" stop-opacity=".9"/><stop offset="1" stop-color="#FFE9A3" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="gCcone" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#FFE9A3" stop-opacity=".42"/><stop offset="1" stop-color="#FFE9A3" stop-opacity="0"/>
+              </linearGradient>
+              <pattern id="gCwin" width="44" height="54" patternUnits="userSpaceOnUse">
+                <rect x="12" y="14" width="16" height="20" rx="2" fill="#6E6390" opacity=".6"/>
+              </pattern>
+            </defs>
+            <rect width="1440" height="900" fill="url(#gCsky)"/>
+            <g fill="#F5D876">
+              <circle class="tw" cx="300" cy="80" r="2.4"/><circle class="tw tw-3" cx="820" cy="60" r="2.4"/>
+              <circle class="tw tw-2" cx="1200" cy="100" r="2.4"/><circle class="tw" cx="560" cy="140" r="2"/>
+            </g>
+            <g>
+              <rect x="300" y="230" width="180" height="420" fill="#241F44"/><rect x="300" y="230" width="180" height="420" fill="url(#gCwin)"/>
+              <rect x="880" y="250" width="190" height="400" fill="#241F44"/><rect x="880" y="250" width="190" height="400" fill="url(#gCwin)"/>
+              <rect x="1130" y="300" width="220" height="350" fill="#241F44"/><rect x="1130" y="300" width="220" height="350" fill="url(#gCwin)"/>
+              <rect class="flick" x="930" y="300" width="26" height="30" rx="3" fill="#F7D77E"/>
+            </g>
+            <g fill="#1C2438">
+              <ellipse cx="520" cy="646" rx="120" ry="42"/><ellipse cx="680" cy="656" rx="100" ry="36"/>
+              <ellipse cx="1240" cy="650" rx="130" ry="44"/>
+            </g>
+            <g id="vanC">
+              <rect x="270" y="560" width="210" height="92" rx="20" fill="#3A3358" stroke="#2A2545" stroke-width="4"/>
+              <rect x="290" y="576" width="70" height="38" rx="8" fill="#262145"/>
+              <rect x="376" y="576" width="86" height="30" rx="6" fill="#312B52"/>
+              <circle cx="320" cy="654" r="22" fill="#1E1A38" stroke="#4A4266" stroke-width="5"/>
+              <circle cx="432" cy="654" r="22" fill="#1E1A38" stroke="#4A4266" stroke-width="5"/>
+            </g>
+            <g id="wallC">
+              <rect x="0" y="152" width="258" height="548" fill="#4A3040"/>
+              <rect x="0" y="130" width="272" height="26" rx="6" fill="#5A3C50"/>
+              <g stroke="#3A2433" stroke-width="5">
+                <line x1="0" y1="220" x2="258" y2="220"/><line x1="0" y1="300" x2="258" y2="300"/>
+                <line x1="0" y1="380" x2="258" y2="380"/><line x1="0" y1="460" x2="258" y2="460"/>
+                <line x1="0" y1="540" x2="258" y2="540"/><line x1="0" y1="620" x2="258" y2="620"/>
+                <line x1="130" y1="220" x2="130" y2="300"/><line x1="70" y1="300" x2="70" y2="380"/>
+                <line x1="180" y1="380" x2="180" y2="460"/><line x1="100" y1="460" x2="100" y2="540"/>
+                <line x1="160" y1="540" x2="160" y2="620"/><line x1="80" y1="620" x2="80" y2="700"/>
+              </g>
+              <rect x="238" y="152" width="20" height="548" fill="#3A2433" opacity=".55"/>
+            </g>
+            <rect x="0" y="668" width="1440" height="232" fill="#322B58"/>
+            <g fill="#3D3566" stroke="#2E2852" stroke-width="3">
+              <ellipse cx="210" cy="740" rx="62" ry="18"/><ellipse cx="430" cy="800" rx="72" ry="20"/>
+              <ellipse cx="700" cy="750" rx="62" ry="18"/><ellipse cx="1010" cy="808" rx="78" ry="20"/>
+              <ellipse cx="1260" cy="742" rx="62" ry="18"/><ellipse cx="560" cy="860" rx="80" ry="20"/>
+              <ellipse cx="900" cy="868" rx="84" ry="20"/>
+            </g>
+            <g stroke="#4A4178" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7">
+              <path d="M170 734 q40 -10 80 0"/><path d="M390 794 q40 -10 80 0"/>
+              <path d="M660 744 q40 -10 80 0"/><path d="M970 802 q40 -10 80 0"/>
+            </g>
+            <g id="farol" transform="translate(-150,0)">
+              <ellipse id="lightPool" cx="980" cy="818" rx="216" ry="46" fill="#F5D876" opacity=".14"/>
+              <polygon class="conef" points="980,308 846,818 1114,818" fill="url(#gCcone)"/>
+              <circle cx="980" cy="290" r="120" fill="url(#gCglow)" opacity=".55"/>
+              <rect x="966" y="296" width="28" height="520" rx="8" fill="#2E2947" stroke="#221E3D" stroke-width="4"/>
+              <path d="M924 302 Q980 230 1036 302 Z" fill="#2E2947" stroke="#221E3D" stroke-width="4"/>
+              <circle cx="980" cy="250" r="9" fill="#2E2947" stroke="#221E3D" stroke-width="3"/>
+              <circle class="lampglow" cx="980" cy="288" r="26" fill="#FFE28A" stroke="#E8C25C" stroke-width="4"/>
+              <rect x="940" y="806" width="80" height="18" rx="9" fill="#2E2947"/>
+            </g>
+            <g id="molly">
+            <g class="walkbob">
+              <path class="tailwag" style="transform-origin:100% 100%" d="M-66 800 Q-114 780 -102 732" stroke="#F1ECDF" stroke-width="22" fill="none" stroke-linecap="round"/>
+              <path d="M-52 745 Q0 710 52 745 L60 868 Q0 886 -60 868 Z" fill="#A6845C" stroke="#7C6144" stroke-width="5"/>
+              <polygon points="-30,742 0,762 -14,782" fill="#C4A87C"/>
+              <polygon points="30,742 0,762 14,782" fill="#C4A87C"/>
+              <circle cx="0" cy="800" r="5" fill="#6B4F33"/><circle cx="0" cy="828" r="5" fill="#6B4F33"/>
+              <path d="M28 782 Q58 776 74 790" stroke="#A6845C" stroke-width="20" fill="none" stroke-linecap="round"/>
+              <g id="mollyCan">
+                <rect x="58" y="764" width="46" height="36" rx="5" fill="#DCE6EA" stroke="#9FB2BC" stroke-width="3"/>
+                <ellipse cx="81" cy="764" rx="23" ry="8" fill="#B9C8D0"/>
+                <rect x="58" y="775" width="46" height="14" fill="#3E6FB0"/>
+                <ellipse cx="78" cy="782" rx="9" ry="4.5" fill="#EDF3F6"/>
+              </g>
+              <circle cx="76" cy="792" r="11" fill="#F1ECDF" stroke="#CBBFA6" stroke-width="3"/>
+              <ellipse cx="-22" cy="872" rx="15" ry="9" fill="#F1ECDF" stroke="#CBBFA6" stroke-width="3"/>
+              <ellipse cx="22" cy="872" rx="15" ry="9" fill="#F1ECDF" stroke="#CBBFA6" stroke-width="3"/>
+              <circle cx="0" cy="668" r="54" fill="#F1ECDF" stroke="#C9BB9E" stroke-width="5"/>
+              <polygon points="-52,660 -62,646 -50,644" fill="#F1ECDF"/>
+              <polygon points="52,660 62,646 50,644" fill="#F1ECDF"/>
+              <polygon points="-34,634 -46,604 -20,622" fill="#F1ECDF" stroke="#C9BB9E" stroke-width="4" stroke-linejoin="round"/>
+              <polygon points="-31,628 -37,612 -24,621" fill="#F2B8C6"/>
+              <polygon points="34,634 46,604 20,622" fill="#F1ECDF" stroke="#C9BB9E" stroke-width="4" stroke-linejoin="round"/>
+              <polygon points="31,628 37,612 24,621" fill="#F2B8C6"/>
+              <ellipse cx="0" cy="622" rx="60" ry="15" fill="#C9A876" stroke="#A98953" stroke-width="4"/>
+              <path d="M-38 622 Q-32 576 0 572 Q32 576 38 622 Z" fill="#C9A876" stroke="#A98953" stroke-width="4"/>
+              <path d="M-38 612 L38 612 L38 600 L-38 600 Z" fill="#8B6A4A"/>
+              <circle cx="-20" cy="668" r="17" fill="#3A3145" stroke="#241F33" stroke-width="5"/>
+              <circle cx="20" cy="668" r="17" fill="#3A3145" stroke="#241F33" stroke-width="5"/>
+              <line x1="-3" y1="668" x2="3" y2="668" stroke="#241F33" stroke-width="5"/>
+              <circle cx="-26" cy="661" r="5" fill="#FFFFFF" opacity=".85"/>
+              <circle cx="14" cy="661" r="5" fill="#FFFFFF" opacity=".85"/>
+              <polygon points="-5,692 5,692 0,699" fill="#E8A3B8"/>
+              <path d="M-6 702 Q0 707 6 702" stroke="#C9BB9E" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              <g stroke="#D9CBB4" stroke-width="3" stroke-linecap="round">
+                <line x1="-46" y1="684" x2="-70" y2="680"/><line x1="-46" y1="694" x2="-68" y2="696"/>
+                <line x1="46" y1="684" x2="70" y2="680"/><line x1="46" y1="694" x2="68" y2="696"/>
+              </g>
+            </g>
+            </g>
+          </svg>
+          <div class="scene-dark" aria-hidden="true"></div>
+          <div class="lupa-light" id="lupaLight" aria-hidden="true"></div>
+          <div class="lupa-ring" id="lupaRing" aria-hidden="true"></div>
+        </div>
+
+        <div class="scene" id="scD">
+          <svg class="scene-svg" id="svgD" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Una lata de atún cae sobre los adoquines de la calle y rebota levantando polvo.">
+            <defs>
+              <linearGradient id="gDsky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#191540"/><stop offset="1" stop-color="#2E2752"/>
+              </linearGradient>
+              <radialGradient id="gDwin">
+                <stop offset=".2" stop-color="#FFE9A3" stop-opacity=".55"/><stop offset="1" stop-color="#FFE9A3" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="gDground" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#403768"/><stop offset="1" stop-color="#322B58"/>
+              </linearGradient>
+            </defs>
+            <rect width="1440" height="900" fill="url(#gDsky)"/>
+            <g fill="#F5D876">
+              <circle class="tw" cx="200" cy="90" r="2.4"/><circle class="tw tw-2" cx="1240" cy="70" r="2.4"/>
+              <circle class="tw tw-3" cx="760" cy="50" r="2"/><circle class="tw" cx="480" cy="120" r="2"/>
+            </g>
+            <g id="houseD">
+              <polygon points="1000,190 1230,120 1440,190" fill="#302A58"/>
+              <rect x="1020" y="185" width="420" height="415" fill="#262050"/>
+              <circle cx="1165" cy="330" r="160" fill="url(#gDwin)"/>
+              <rect x="1090" y="262" width="150" height="132" rx="10" fill="#FFE9A3" class="windowglow" stroke="#6B5E4A" stroke-width="4"/>
+              <g stroke="#262050" stroke-width="10"><line x1="1165" y1="262" x2="1165" y2="394"/><line x1="1090" y1="328" x2="1240" y2="328"/></g>
+            </g>
+            <g fill="#1D1840">
+              <ellipse cx="180" cy="598" rx="130" ry="62"/><ellipse cx="420" cy="618" rx="110" ry="50"/><ellipse cx="820" cy="608" rx="120" ry="54"/>
+            </g>
+            <rect x="0" y="600" width="1440" height="300" fill="url(#gDground)"/>
+            <g fill="#494070" stroke="#363057" stroke-width="4">
+              <ellipse cx="180" cy="672" rx="58" ry="21"/><ellipse cx="330" cy="668" rx="56" ry="20"/>
+              <ellipse cx="490" cy="674" rx="58" ry="21"/><ellipse cx="650" cy="668" rx="56" ry="20"/>
+              <ellipse cx="810" cy="674" rx="58" ry="21"/><ellipse cx="970" cy="668" rx="56" ry="20"/>
+              <ellipse cx="1130" cy="674" rx="58" ry="21"/><ellipse cx="1290" cy="668" rx="56" ry="20"/>
+              <ellipse cx="255" cy="742" rx="60" ry="22"/><ellipse cx="420" cy="748" rx="62" ry="22"/>
+              <ellipse cx="590" cy="742" rx="60" ry="22"/><ellipse cx="760" cy="748" rx="62" ry="22"/>
+              <ellipse cx="930" cy="742" rx="60" ry="22"/><ellipse cx="1100" cy="748" rx="62" ry="22"/>
+              <ellipse cx="1270" cy="742" rx="60" ry="22"/>
+              <ellipse cx="340" cy="828" rx="66" ry="24"/><ellipse cx="530" cy="834" rx="68" ry="24"/>
+              <ellipse cx="730" cy="828" rx="66" ry="24"/><ellipse cx="930" cy="834" rx="68" ry="24"/>
+              <ellipse cx="1120" cy="828" rx="66" ry="24"/>
+            </g>
+            <g stroke="#5A5187" stroke-width="4" fill="none" stroke-linecap="round" opacity=".75">
+              <path d="M140 666 q40 -11 80 0"/><path d="M450 668 q40 -11 80 0"/><path d="M770 668 q40 -11 80 0"/>
+              <path d="M215 736 q40 -11 80 0"/><path d="M550 736 q40 -11 80 0"/><path d="M890 736 q40 -11 80 0"/>
+              <path d="M300 822 q40 -11 80 0"/><path d="M690 822 q40 -11 80 0"/><path d="M1080 822 q40 -11 80 0"/>
+            </g>
+            <g id="potD">
+              <path d="M64 648 L188 648 L172 730 L80 730 Z" fill="#C0563B" stroke="#96412C" stroke-width="4"/>
+              <rect x="56" y="636" width="140" height="20" rx="8" fill="#D96A4B" stroke="#96412C" stroke-width="4"/>
+              <g class="sway" style="transform-origin:50% 100%">
+                <path d="M110 636 Q86 566 122 534 Q150 574 134 636 Z" fill="#3E5C46" stroke="#2E4634" stroke-width="3"/>
+                <path d="M140 636 Q160 586 132 556 Q116 590 126 636 Z" fill="#4A6E54" stroke="#2E4634" stroke-width="3"/>
+              </g>
+            </g>
+            <g id="canLines" stroke="#C3B8DE" stroke-width="8" stroke-linecap="round" opacity=".8" fill="none">
+              <path d="M598 110 Q588 220 598 330"/><path d="M700 55 Q692 180 700 310"/><path d="M804 120 Q798 230 804 340"/>
+            </g>
+            <g id="canD">
+              <g transform="rotate(-8 720 560)">
+                <rect x="598" y="474" width="244" height="168" rx="18" fill="#EDF3F6" stroke="#B9C8D0" stroke-width="4"/>
+                <rect x="598" y="524" width="244" height="70" fill="#3E6FB0"/>
+                <ellipse cx="700" cy="559" rx="38" ry="17" fill="#EDF3F6"/>
+                <polygon points="734,559 764,542 764,576" fill="#EDF3F6"/>
+                <path d="M700 545 q14 -10 22 2" stroke="#3E6FB0" stroke-width="3" fill="none"/>
+                <circle cx="678" cy="554" r="4.5" fill="#14264A"/>
+                <path d="M666 566 q8 6 16 2" stroke="#3E6FB0" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <g stroke="#E8A33C" stroke-width="7" stroke-linecap="round">
+                  <line x1="620" y1="492" x2="620" y2="512"/><line x1="720" y1="486" x2="720" y2="506"/><line x1="820" y1="492" x2="820" y2="512"/>
+                  <line x1="620" y1="606" x2="620" y2="626"/><line x1="720" y1="612" x2="720" y2="632"/><line x1="820" y1="606" x2="820" y2="626"/>
+                </g>
+                <ellipse cx="720" cy="476" rx="124" ry="33" fill="#C9D6DD" stroke="#A9BAC3" stroke-width="4"/>
+                <ellipse cx="720" cy="472" rx="106" ry="25" fill="#E4EDF1"/>
+                <ellipse cx="720" cy="472" rx="70" ry="15" fill="none" stroke="#C2D0D7" stroke-width="3"/>
+                <rect x="742" y="458" width="42" height="15" rx="7" fill="#B4C3CB" stroke="#93A6B0" stroke-width="3"/>
+                <circle cx="752" cy="465" r="4" fill="#93A6B0"/>
+              </g>
+            </g>
+            <g id="dust" fill="#8F84AC">
+              <circle cx="560" cy="690" r="22"/><circle cx="528" cy="670" r="13"/><circle cx="585" cy="664" r="10"/>
+              <circle cx="880" cy="690" r="22"/><circle cx="912" cy="668" r="13"/><circle cx="856" cy="664" r="10"/>
+              <circle cx="700" cy="712" r="14"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="paws" id="paws" aria-hidden="true"></div>
+
+        <p class="cap" id="cap0">Unas horas antes… <strong>Gatópolis era una ciudad feliz.</strong></p>
+        <p class="cap" id="cap1">Hasta que los platos amanecieron vacíos: <strong>ni un bocado de atún.</strong></p>
+        <p class="cap" id="cap2">Desde su balcón, <strong>Lady Patitas Rosadas</strong> tomó el caso.</p>
+        <p class="cap" id="cap3">Esa noche, una figura <strong>escondía algo</strong> bajo los faroles…</p>
+        <p class="cap" id="cap4">¡Tin-tin-tan! <strong>Una lata cayó</strong> en la oscuridad.</p>
+        <p class="cap" id="cap5">El caso de las latas desaparecidas <strong>había comenzado.</strong></p>
+
+        <p class="scroll-hint" id="scrollHint">seguí bajando ▾</p>
+      </div>
+    </section>
+
+    <!-- ===== 3 · El tablero del caso ===== -->
+    <section class="tablero" id="tablero">
+      <div class="tablero-inner">
+        <div class="section-head">
+          <h2>El tablero del caso</h2>
+          <p>Cuatro pistas. Un misterio. ¿A quién señala el hilo rojo?</p>
+        </div>
+        <div class="board">
+          <figure class="polaroid reveal" style="--rot:-5deg">
+            <span class="pin pin-visible" data-pin></span>
+            <img loading="lazy" decoding="async" src="img/pol_molly.jpg" alt="Polaroid del Dr. Molly, un gato blanco con sombrero y lentes redondos.">
+            <figcaption>El Dr. Molly,<br>el abogato nuevo</figcaption>
+          </figure>
+          <figure class="polaroid reveal" style="--rot:4deg">
+            <span class="pin pin-visible" data-pin></span>
+            <img loading="lazy" decoding="async" src="img/pol_latas.jpg" alt="Polaroid de tres latas de atún.">
+            <figcaption>La evidencia:<br>latas que desaparecen</figcaption>
+          </figure>
+          <figure class="polaroid reveal" style="--rot:-3deg">
+            <span class="pin pin-visible" data-pin></span>
+            <img loading="lazy" decoding="async" src="img/pol_kitty.jpg" alt="Polaroid de la capitana Kitty, gata gris con gorra azul de policía.">
+            <figcaption>La capitana Kitty,<br>jefa de los poligatos</figcaption>
+          </figure>
+          <figure class="polaroid reveal" style="--rot:6deg">
+            <span class="pin pin-visible" data-pin></span>
+            <img loading="lazy" decoding="async" src="img/pol_dushi.jpg" alt="Polaroid de Lady Dushi, gata atigrada elegante con saco negro.">
+            <figcaption>Lady Dushi,<br>la vecina elegante</figcaption>
+          </figure>
+        </div>
+
+        <div class="book-cta reveal">
+          <img class="book-cover" loading="lazy" decoding="async" src="img/portada.jpg" alt="Portada de Las aventuras de Lady Patitas Rosadas: el misterio de las latas de atún.">
+          <div class="book-info">
+            <span class="pin" data-pin></span>
+            <h3>Las aventuras de Lady Patitas Rosadas</h3>
+            <p class="book-subtitle">El misterio de las latas de atún · Bibi Dipeo</p>
+            <div class="badges">
+              <span class="badge badge-age">4 a 9 años</span>
+              <span class="badge">Español</span>
+              <span class="badge">English</span>
+              <span class="badge">Português</span>
+              <span class="badge badge-audio">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2a7 7 0 0 0-7 7v5a2 2 0 0 0 2 2h2v-6H5V9a5 5 0 0 1 10 0v1h-2v6h2a2 2 0 0 0 2-2V9a7 7 0 0 0-7-7z" fill="currentColor"/></svg>
+                Incluye audiolibro
+              </span>
+            </div>
+            <p class="book-pitch">47 páginas ilustradas para resolver el caso en familia, antes de dormir o donde el misterio los encuentre.</p>
+            <a class="btn" href="https://www.amazon.com/dp/B0GFK696QH" target="_blank" rel="noopener">Resolvé el misterio en Amazon</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4 · Catálogo ===== -->
+    <section class="catalogo" id="catalogo">
+      <div class="catalogo-inner">
+        <div class="section-head">
+          <h2>Nuestros cuentos</h2>
+          <p><span class="pin" data-pin></span>Historias breves e ilustradas, en español, inglés y portugués.</p>
+        </div>
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-img"><img loading="lazy" decoding="async" src="img/portada.jpg" alt="Portada de Lady Patitas Rosadas."></div>
+            <div class="card-body">
+              <h3>Lady Patitas Rosadas</h3>
+              <p>El misterio de las latas de atún. Una detective, cuatro sospechosos y una ciudad con hambre.</p>
+              <div class="badges">
+                <span class="badge">ES</span><span class="badge">EN</span><span class="badge">PT</span>
+                <span class="badge badge-audio">Audiolibro</span>
+              </div>
+              <a class="card-link" href="https://www.amazon.com/dp/B0GFK696QH" target="_blank" rel="noopener">Ver en Amazon →</a>
+            </div>
+          </article>
+          <article class="card card-soon reveal">
+            <div class="card-img card-img-soon">
+              <svg viewBox="0 0 80 80" aria-hidden="true">
+                <circle cx="40" cy="34" r="20" fill="none" stroke="#C9A876" stroke-width="6"/>
+                <line x1="54" y1="50" x2="68" y2="66" stroke="#C9A876" stroke-width="8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="card-body">
+              <h3>Próximo caso…</h3>
+              <p>Lady Patitas ya está siguiendo una nueva pista. Muy pronto en esta estantería.</p>
+              <div class="badges"><span class="badge badge-soon">Próximamente</span></div>
+            </div>
+          </article>
+          <article class="card card-soon reveal">
+            <div class="card-img card-img-soon">
+              <svg viewBox="0 0 80 80" aria-hidden="true">
+                <rect x="18" y="14" width="44" height="54" rx="5" fill="none" stroke="#C9A876" stroke-width="6"/>
+                <line x1="28" y1="30" x2="52" y2="30" stroke="#C9A876" stroke-width="5" stroke-linecap="round"/>
+                <line x1="28" y1="42" x2="52" y2="42" stroke="#C9A876" stroke-width="5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="card-body">
+              <h3>Más cuentos en camino</h3>
+              <p>La colección de Bichito Lector sigue creciendo con nuevas historias ilustradas.</p>
+              <div class="badges"><span class="badge badge-soon">Próximamente</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5 · La editorial ===== -->
+    <section class="editorial" id="editorial">
+      <div class="editorial-inner">
+        <figure class="editorial-img reveal">
+          <img loading="lazy" decoding="async" src="img/autora.jpg" alt="Bibi Dipeo escribe en su escritorio rodeada por Lady Patitas, el Dr. Molly, la capitana Kitty y Lady Dushi.">
+        </figure>
+        <div class="editorial-text">
+          <span class="pin" data-pin></span>
+          <h2>La editorial</h2>
+          <p><strong>Bichito Lector</strong> hace cuentos infantiles ilustrados que se leen en una noche y se recuerdan mucho más. Historias con misterio, humor y personajes que caminan en cuatro patitas, publicadas en español, inglés y portugués.</p>
+          <p>Detrás de cada libro está <strong>Bibi Dipeo</strong> y un equipo de ilustradores (y varios gatos muy exigentes) cuidando cada página, del papel a la tinta.</p>
+          <blockquote>"Hay misterios que se resuelven con lupa y otros que se resuelven con un abrazo."</blockquote>
+          <a class="btn btn-ghost" href="mailto:contacto@bichitolector.com">Escribinos: contacto@bichitolector.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <svg class="footer-sky" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true">
+      <rect x="30" y="40" width="60" height="50" fill="#2E2A4F"/><rect x="110" y="20" width="50" height="70" fill="#3B3560"/>
+      <rect x="180" y="50" width="70" height="40" fill="#2E2A4F"/><rect x="270" y="28" width="55" height="62" fill="#3B3560"/>
+      <rect x="345" y="45" width="65" height="45" fill="#2E2A4F"/><rect x="430" y="18" width="48" height="72" fill="#3B3560"/>
+      <rect x="500" y="42" width="70" height="48" fill="#2E2A4F"/><rect x="590" y="30" width="52" height="60" fill="#3B3560"/>
+      <rect x="662" y="52" width="66" height="38" fill="#2E2A4F"/><rect x="748" y="22" width="50" height="68" fill="#3B3560"/>
+      <rect x="820" y="44" width="64" height="46" fill="#2E2A4F"/><rect x="905" y="32" width="54" height="58" fill="#3B3560"/>
+      <rect x="980" y="48" width="68" height="42" fill="#2E2A4F"/><rect x="1070" y="25" width="52" height="65" fill="#3B3560"/>
+      <g fill="#F5D876"><rect x="45" y="52" width="8" height="10"/><rect x="122" y="32" width="8" height="10"/><rect x="200" y="60" width="8" height="10"/><rect x="285" y="40" width="8" height="10"/><rect x="360" y="55" width="8" height="10"/><rect x="444" y="30" width="8" height="10"/><rect x="516" y="52" width="8" height="10"/><rect x="604" y="42" width="8" height="10"/><rect x="762" y="34" width="8" height="10"/><rect x="836" y="54" width="8" height="10"/><rect x="920" y="44" width="8" height="10"/><rect x="1084" y="37" width="8" height="10"/></g>
+      <circle cx="1150" cy="22" r="14" fill="#F5D876"/><circle cx="1156" cy="19" r="11" fill="#1E1B3A"/>
+    </svg>
+    <div class="footer-body">
+      <p class="footer-brand">Bichito Lector · cuentos que maúllan de noche</p>
+      <p class="footer-fine">contacto@bichitolector.com · BichitoLector.com · © 2026 Bichito Lector. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
