@@ -77,7 +77,10 @@ const svgSE = document.getElementById("svgSE");
   if (el) el.style.opacity = "0";
 });
 const scrollHint = document.getElementById("scrollHint");
-const caps = [0, 1, 2, 3, 4, 5].map((i) => document.getElementById("cap" + i));
+const oscuroSB = document.getElementById("oscuroSB");
+const tituloFilm = document.getElementById("tituloFilm");
+const ctaFilm = document.getElementById("ctaFilm");
+const caps = [0, 1, 2, 3].map((i) => document.getElementById("cap" + i));
 
 const lerp = (a, b, t) => a + (b - a) * t;
 
@@ -94,41 +97,45 @@ function updateFilm() {
 
   if (rect.top > window.innerHeight || rect.bottom < 0) return;
 
-  // --- Escena A · la misión (0 a .26)
+  // TEASER "El plan": comedia de misión imposible en 5 beats.
+  // 1 vacaciones · 2 el problema · 3 flash: un plan · 4 bueno… varios planes · 5 placa y corte.
+
+  // la escena de la duda/idea no participa del teaser
+  scC.style.opacity = "0";
+
+  // --- Beat 1 · el cuarto: se vienen las vacaciones (0 a .26)
   scA.style.opacity = 1 - seg(p, 0.20, 0.26);
   svgSA.style.transform = `scale(${1.08 - 0.06 * seg(p, 0, 0.22)})`;
 
-  // --- Escena E · EL SUEÑO de la playa (.20 a .44): la sombrilla espera vacía
-  scE.style.opacity = Math.min(seg(p, 0.20, 0.26), 1 - seg(p, 0.38, 0.44));
-  svgSE.style.transform = `scale(${1.08 - 0.06 * seg(p, 0.22, 0.42)})`;
-
-  // --- Escena B · el plan y la mano de mamá (.38 a .66)
-  scB.style.opacity = Math.min(seg(p, 0.38, 0.44), 1 - seg(p, 0.60, 0.66));
-  const q1 = seg(p, 0.44, 0.51);   // se desliza a la valija
-  const q3 = seg(p, 0.575, 0.63);  // la mano la levanta
-  const sx = lerp(lerp(-240, 0, q1), 40, q3);
-  const sy = lerp(lerp(-230, 60, q1), -260, q3);
-  const srot = lerp(lerp(-4, 14, q1), -6, q3);
+  // --- Beats 2 y 4 · el estante, la valija y la mano de mamá
+  scB.style.opacity = Math.min(seg(p, 0.20, 0.26), Math.max(1 - seg(p, 0.38, 0.47), seg(p, 0.56, 0.65)));
+  const q1 = seg(p, 0.60, 0.68);   // se desliza a la valija
+  const q3 = seg(p, 0.78, 0.85);   // la mano la agarra y la levanta
+  const manoY = lerp(lerp(-420, 240, seg(p, 0.70, 0.77)), -330, q3);
+  manoSB.setAttribute("transform", `translate(-268, ${manoY})`);
+  // durante el levantamiento, la bufanda cuelga de la mano (mismo desplazamiento)
+  const sx = lerp(lerp(-240, 0, q1), 24, q3);
+  const sy = q3 > 0 ? manoY - 185 : lerp(-230, 60, q1);
+  const srot = lerp(lerp(-4, 14, q1), -2, q3);
   sandSB.setAttribute("transform", `translate(${sx}, ${sy}) rotate(${srot} 672 508)`);
-  const manoY = lerp(lerp(-420, 0, seg(p, 0.52, 0.57)), -300, q3);
-  manoSB.setAttribute("transform", `translate(0, ${manoY})`);
+  oscuroSB.style.opacity = String(0.9 * seg(p, 0.86, 0.93));
 
-  // --- Escena C · la duda, la idea… y CORTE (.60 a 1)
-  scC.style.opacity = seg(p, 0.60, 0.66);
-  const ideaQ = fade(p, 0.83, 0.94, 0.03);
-  ideaC.style.opacity = String(ideaQ);
-  ideaC.setAttribute("transform", `translate(0, ${-14 * ideaQ})`);
-  sandTristeC.style.opacity = "1";
-  sandAbrazoC.style.opacity = "0";
-  oscuroSC.style.opacity = String(0.85 * seg(p, 0.955, 1.0));
+  // --- Beat 3 · el sueño de la playa, en fundido suave (.38 a .65)
+  scE.style.opacity = Math.min(seg(p, 0.38, 0.47), 1 - seg(p, 0.56, 0.65));
+  svgSE.style.transform = `scale(${1.08 - 0.06 * seg(p, 0.40, 0.62)})`;
+
+  // --- Placa de título y CTA
+  const tQ = seg(p, 0.90, 0.945);
+  tituloFilm.style.opacity = String(tQ);
+  const ctaQ = seg(p, 0.945, 0.98);
+  ctaFilm.style.opacity = String(ctaQ);
+  ctaFilm.style.pointerEvents = ctaQ > 0.5 ? "auto" : "none";
 
   // --- Subtítulos
-  setCap(caps[0], fade(p, 0.02, 0.13));
-  setCap(caps[1], fade(p, 0.24, 0.38));
-  setCap(caps[2], fade(p, 0.46, 0.58));
-  setCap(caps[3], fade(p, 0.67, 0.79));
-  setCap(caps[4], fade(p, 0.83, 0.93));
-  setCap(caps[5], fade(p, 0.945, 1.05));
+  setCap(caps[0], fade(p, 0.02, 0.17));
+  setCap(caps[1], fade(p, 0.22, 0.38));
+  setCap(caps[2], fade(p, 0.455, 0.60));
+  setCap(caps[3], fade(p, 0.66, 0.85));
 
   scrollHint.style.opacity = String(1 - seg(p, 0.005, 0.03));
 }

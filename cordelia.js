@@ -66,6 +66,9 @@ const amigas = [1, 2, 3].map((i) => document.getElementById("amiga" + i));
 const grisB = document.getElementById("grisB");
 const scC = document.getElementById("scC");
 const svgCC = document.getElementById("svgCC");
+const sombraC = document.getElementById("sombraC");
+const reaccionC = document.getElementById("reaccionC");
+const glowFinal = document.getElementById("glowFinal");
 const cajaL = document.getElementById("cajaL");
 const cajaR = document.getElementById("cajaR");
 const luzC = document.getElementById("luzC");
@@ -120,27 +123,30 @@ function updateFilm() {
   scA.style.opacity = "0";
   scB.style.opacity = "0";
 
-  // --- El depósito (todo el teaser, salvo el flash)
-  scC.style.opacity = Math.max(1 - seg(p, 0.42, 0.47), seg(p, 0.58, 0.63));
-  // la cámara se acerca despacio a la caja
-  svgCC.style.transformOrigin = "62% 62%";
-  svgCC.style.transform = `scale(${1 + 0.12 * seg(p, 0.04, 0.40)})`;
+  // --- El depósito de la juguetería (todo el teaser, salvo el sueño)
+  // fundidos largos y solapados, como en Lady Patitas: nada de cortes bruscos
+  scC.style.opacity = Math.max(1 - seg(p, 0.38, 0.47), seg(p, 0.56, 0.65));
+  // dolly-in: la cámara viaja hacia la caja
+  svgCC.style.transformOrigin = "57% 62%";
+  svgCC.style.transform = `scale(${1 + 0.30 * seg(p, 0.03, 0.40)})`;
   // la caja tiembla cuando alguien se acerca (nunca se abre)
   let tiembla = 0;
-  if (p > 0.72 && p < 0.86) {
-    tiembla = Math.sin(p * 800) * 4 * Math.sin(((p - 0.72) / 0.14) * Math.PI);
+  if (p > 0.70 && p < 0.86) {
+    tiembla = Math.sin(p * 800) * 4.5 * Math.sin(((p - 0.70) / 0.16) * Math.PI);
   }
   cajaL.setAttribute("transform", `translate(${tiembla * 0.6}, 0)`);
   cajaR.setAttribute("transform", `translate(${tiembla}, 0)`);
-  luzC.style.opacity = String(0.8 * seg(p, 0.64, 0.78));
-  ojosCerradosC.style.opacity = "1";
-  ojosAbiertosC.style.opacity = "0";
-  manoC.setAttribute("transform", "translate(520, 30)");
-  oscuroC.style.opacity = String(0.9 * seg(p, 0.86, 0.93));
+  // la luz cálida de la puerta, la sombra de los pasos y los juguetes que reaccionan
+  luzC.style.opacity = String(0.85 * seg(p, 0.64, 0.76));
+  sombraC.setAttribute("transform", `translate(${-440 * seg(p, 0.67, 0.82)}, 0)`);
+  sombraC.style.opacity = String(0.75 * seg(p, 0.66, 0.72));
+  reaccionC.style.opacity = String(0.9 * seg(p, 0.67, 0.72));
+  oscuroC.style.opacity = String(0.9 * seg(p, 0.86, 0.94));
+  glowFinal.style.opacity = String(seg(p, 0.88, 0.94));
 
-  // --- El flash del sueño (.42 a .63): un suspiro de colores y nubes
-  scD.style.opacity = Math.min(seg(p, 0.42, 0.47), 1 - seg(p, 0.58, 0.63));
-  const q = seg(p, 0.43, 0.62);
+  // --- El sueño (.38 a .65): entra y sale en fundido suave
+  scD.style.opacity = Math.min(seg(p, 0.38, 0.47), 1 - seg(p, 0.56, 0.65));
+  const q = seg(p, 0.40, 0.62);
   const pos = vueloPos(q);
   const rot = 16 * Math.sin(q * Math.PI * 3);
   const escala = 1 - 0.22 * q;

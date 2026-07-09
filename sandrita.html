@@ -29,6 +29,43 @@
     }
     .cross h2 { color: var(--crema); font-size: clamp(1.5rem, 3.5vw, 2.1rem); margin-bottom: 8px; }
     .cross p { color: #B9B1D6; margin-bottom: 24px; }
+    .pg-sandrita .pelicula { height: 520vh; }
+    .cta-film {
+      position: absolute;
+      left: 50%;
+      bottom: 18svh;
+      transform: translateX(-50%);
+      z-index: 5;
+      will-change: opacity;
+    }
+    .title-card {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 4;
+      pointer-events: none;
+      will-change: opacity;
+      padding: 0 20px;
+    }
+    .title-card .tc-name {
+      font-family: "Baloo 2", cursive;
+      font-weight: 800;
+      font-size: clamp(2.4rem, 7.5vw, 4.6rem);
+      color: var(--crema);
+      line-height: 1.05;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, .6);
+    }
+    .title-card .tc-tag {
+      margin-top: 10px;
+      font-family: "Baloo 2", cursive;
+      font-weight: 600;
+      font-size: clamp(1.05rem, 2.4vw, 1.5rem);
+      color: #EADFC8;
+    }
   </style>
 </head>
 <body class="pg-sandrita">
@@ -140,18 +177,30 @@
               </g>
             </g>
             <g id="anitaSA" class="idle">
-              <ellipse cx="920" cy="640" rx="30" ry="10" fill="#96714C" opacity=".5"/>
-              <path d="M896 508 Q920 490 944 508 L952 610 L888 610 Z" fill="#5FA8A0" stroke="#47867E" stroke-width="4"/>
-              <circle cx="932" cy="560" r="7" fill="#F2C14E"/>
-              <circle cx="920" cy="478" r="30" fill="#C98F62" stroke="#A9713A" stroke-width="3"/>
-              <path d="M890 470 Q892 442 920 444 Q950 442 950 472 Q950 456 938 452 Q916 444 898 460 Q890 466 890 470 Z" fill="#3A2A22"/>
-              <path d="M890 468 q-4 26 6 34 q-2 -22 0 -30 Z" fill="#3A2A22"/>
-              <path d="M950 468 q4 26 -6 34 q2 -22 0 -30 Z" fill="#3A2A22"/>
-              <ellipse cx="910" cy="480" rx="4.5" ry="6" fill="#33241A"/><ellipse cx="932" cy="480" rx="4.5" ry="6" fill="#33241A"/>
-              <circle cx="908" cy="477" r="2" fill="#FFFFFF"/><circle cx="930" cy="477" r="2" fill="#FFFFFF"/>
-              <path d="M912 496 q8 7 16 0" stroke="#8E4A23" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <rect x="900" y="610" width="14" height="30" rx="6" fill="#C98F62"/>
-              <rect x="926" y="610" width="14" height="30" rx="6" fill="#C98F62"/>
+              <ellipse cx="920" cy="648" rx="34" ry="10" fill="#96714C" opacity=".5"/>
+              <path d="M898 520 Q920 504 942 520 L954 616 L886 616 Z" fill="#5FA8A0" stroke="#47867E" stroke-width="4"/>
+              <circle cx="920" cy="570" r="8" fill="#F2C14E"/>
+              <circle cx="920" cy="574" r="3" fill="#E8873C"/>
+              <line x1="893" y1="540" x2="878" y2="568" stroke="#C98F62" stroke-width="9" stroke-linecap="round"/>
+              <line x1="947" y1="540" x2="962" y2="568" stroke="#C98F62" stroke-width="9" stroke-linecap="round"/>
+              <rect x="902" y="614" width="13" height="28" rx="6" fill="#C98F62"/>
+              <rect x="925" y="614" width="13" height="28" rx="6" fill="#C98F62"/>
+              <ellipse cx="908" cy="644" rx="11" ry="6" fill="#B04A6B"/>
+              <ellipse cx="932" cy="644" rx="11" ry="6" fill="#B04A6B"/>
+              <circle cx="920" cy="466" r="34" fill="#3A2A22"/>
+              <rect x="886" y="466" width="13" height="42" rx="6" fill="#3A2A22"/>
+              <rect x="941" y="466" width="13" height="42" rx="6" fill="#3A2A22"/>
+              <circle cx="920" cy="474" r="28" fill="#C98F62"/>
+              <path d="M894 460 Q904 448 920 448 Q936 448 946 460 Q936 456 920 456 Q904 456 894 460 Z" fill="#3A2A22"/>
+              <circle cx="946" cy="452" r="6" fill="#E8873C"/>
+              <ellipse cx="910" cy="474" rx="5" ry="7" fill="#33241A"/>
+              <ellipse cx="930" cy="474" rx="5" ry="7" fill="#33241A"/>
+              <circle cx="908" cy="471" r="2.2" fill="#FFFFFF"/><circle cx="928" cy="471" r="2.2" fill="#FFFFFF"/>
+              <path d="M902 464 q6 -5 12 -2" stroke="#33241A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <path d="M926 462 q6 -3 12 2" stroke="#33241A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <circle cx="899" cy="486" r="4.5" fill="#E8A3B8" opacity=".8"/>
+              <circle cx="941" cy="486" r="4.5" fill="#E8A3B8" opacity=".8"/>
+              <path d="M912 490 q8 8 16 0" stroke="#8E4A23" stroke-width="3.5" fill="none" stroke-linecap="round"/>
             </g>
             <g id="valijaSA">
               <rect x="170" y="700" width="180" height="120" rx="16" fill="#D96A8B" stroke="#B04A6B" stroke-width="5"/>
@@ -219,6 +268,7 @@
               <circle class="mote" cx="420" cy="330" r="4"/><circle class="mote mote-3" cx="1050" cy="380" r="4"/>
             </g>
           </svg>
+          <div class="scene-dark" id="oscuroSB" aria-hidden="true" style="opacity:0"></div>
         </div>
 
         <!-- Escena C · la idea -->
@@ -387,12 +437,17 @@
 
         <div class="paws" id="paws" aria-hidden="true"></div>
 
-        <p class="cap" id="cap0">En verano, Anita le dio una misión: <strong>cuidar a Pompón</strong> hasta que llegara el frío.</p>
-        <p class="cap" id="cap1">Ella soñaba con conocer el mar… pero <strong>¿quién lleva una bufanda a la playa?</strong></p>
-        <p class="cap" id="cap2">Plan tras plan… <strong>la mamá siempre la descubría.</strong></p>
-        <p class="cap" id="cap3">"¿Por qué mis planes siempre fallan?" <strong>Quizás era tiempo de renunciar…</strong></p>
-        <p class="cap" id="cap4">Y entonces recordó: "una oportunidad más a mis planes deba dar". <strong>¡La idea!</strong></p>
-        <p class="cap" id="cap5">¿Funcionó el plan de los pasitos? <strong>El final te espera en el libro.</strong></p>
+        <p class="cap" id="cap0">Faltan tres días para las vacaciones <strong>en la playa.</strong></p>
+        <p class="cap" id="cap1">Y Sandrita tiene un problema: <strong>es una bufanda de invierno.</strong></p>
+        <p class="cap" id="cap2">Pero también tiene algo que nadie sospecha: <strong>un plan.</strong></p>
+        <p class="cap" id="cap3">Bueno… <strong>varios planes.</strong></p>
+
+        <div class="title-card" id="tituloFilm" style="opacity:0" aria-hidden="true">
+          <p class="tc-name">Sandrita<br>la bufandita</p>
+          <p class="tc-tag">Un cuento sobre intentarlo una vez más.</p>
+        </div>
+
+        <a class="btn cta-film" id="ctaFilm" href="#libro" style="opacity:0; pointer-events:none;">Descubrí el plan ganador</a>
 
         <p class="scroll-hint" id="scrollHint">seguí bajando ▾</p>
       </div>
@@ -416,7 +471,7 @@
               <span class="badge">Español</span>
             </div>
             <p class="book-pitch">Una bufanda de invierno, unas vacaciones de verano y muchos planes fallidos. ¿Cuál fue el plan que sí funcionó? <strong>El final te espera en el libro.</strong></p>
-            <a class="btn" href="mailto:contacto@bichitolector.com?subject=Quiero%20el%20libro%20Sandrita%20la%20bufandita">Consultá por este cuento</a>
+            <a class="btn" href="https://www.amazon.com/dp/B0CHL9MZL4" target="_blank" rel="noopener">Descubrí el plan ganador en Amazon</a>
           </div>
         </div>
       </div>
